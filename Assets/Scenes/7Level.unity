@@ -165,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 184095620809367911, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
       propertyPath: inventoryPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1029818607}
     - target: {fileID: 184095620809367911, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
       propertyPath: thirdStarPanel
       value: 
@@ -532,6 +532,11 @@ GameObject:
 --- !u!95 &950151728 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1552636190, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
+  m_PrefabInstance: {fileID: 841693719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1029818607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4669809525629600985, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
   m_PrefabInstance: {fileID: 841693719}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1041960048
