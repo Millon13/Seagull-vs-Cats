@@ -852,6 +852,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7074179309808036190, guid: eb4421f78f42c4745a47d1d650b5a2d4, type: 3}
+      propertyPath: task
+      value: 
+      objectReference: {fileID: 261551468}
+    - target: {fileID: 7074179309808036190, guid: eb4421f78f42c4745a47d1d650b5a2d4, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1826171093}
