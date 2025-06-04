@@ -1203,6 +1203,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
+--- !u!114 &1671154235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 184095620809367911, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
+  m_PrefabInstance: {fileID: 1671154234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec696d814f04163449fa3add57f388e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1802481324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1335,6 +1346,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4669809526096832032, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1671154235}
+    - target: {fileID: 4669809526096832032, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669809526385076410, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1671154235}
+    - target: {fileID: 4669809526385076410, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickInventary
+      objectReference: {fileID: 0}
     - target: {fileID: 4669809527090570194, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
       propertyPath: m_Name
       value: Canvas
