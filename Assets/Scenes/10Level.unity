@@ -496,6 +496,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4de6882e8ecb875429aa918ebc475d82, type: 3}
+--- !u!114 &861325930 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4669809526488302705, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
+  m_PrefabInstance: {fileID: 1468177240}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &893328148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -673,6 +684,10 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1186460057}
+    - target: {fileID: 7074179309848675477, guid: eb4421f78f42c4745a47d1d650b5a2d4, type: 3}
+      propertyPath: coinsText
+      value: 
+      objectReference: {fileID: 861325930}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb4421f78f42c4745a47d1d650b5a2d4, type: 3}
 --- !u!1 &1080654233 stripped
