@@ -1405,6 +1405,10 @@ PrefabInstance:
       propertyPath: itemComponent
       value: 
       objectReference: {fileID: 128443190}
+    - target: {fileID: 7074179309808036190, guid: eb4421f78f42c4745a47d1d650b5a2d4, type: 3}
+      propertyPath: threeStarFish
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7074179309848675477, guid: eb4421f78f42c4745a47d1d650b5a2d4, type: 3}
       propertyPath: coinsText
       value: 
