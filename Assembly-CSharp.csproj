@@ -108,6 +108,7 @@
     <Compile Include="Assets\Scripts\Task.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\ItemBase.cs" />
+    <Compile Include="Assets\Scripts\SaveSystemPrefs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

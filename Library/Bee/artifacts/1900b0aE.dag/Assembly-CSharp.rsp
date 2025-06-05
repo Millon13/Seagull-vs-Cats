@@ -420,6 +420,7 @@
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/PressedButton.cs"
 "Assets/Scripts/SaveSystem.cs"
+"Assets/Scripts/SaveSystemPrefs.cs"
 "Assets/Scripts/Sound.cs"
 "Assets/Scripts/Task.cs"
 "Assets/Scripts/TriggerDamage.cs"
