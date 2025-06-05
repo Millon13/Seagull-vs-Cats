@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<GameObject, Coin> coinContainer;
     public Dictionary<GameObject, BuffReciever> buffRecieverContainer;
     public Dictionary<GameObject, ItemComponent> itemsContainer;
+    public Dictionary<int, int> levelStars;
     //public Dictionary<GameObject, Fish> fishContainer;
     [HideInInspector] public Inventory inventory;
     public ItemBase itemDataBase;
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         coinContainer = new Dictionary<GameObject, Coin>();
         buffRecieverContainer = new Dictionary<GameObject, BuffReciever>();
         itemsContainer = new Dictionary<GameObject, ItemComponent>();
+        levelStars = new Dictionary<int, int>();
         //fishContainer = new Dictionary<GameObject, Fish>();
     }
     private void Update()
