@@ -31,7 +31,7 @@ public class Player : Sound
     [SerializeField] private float damageForce;
     [SerializeField] private Task task;
     [SerializeField] private Rigidbody2D rigidbd;
-    private int totalLevelCoins;
+    public int totalLevelCoins;
     private bool hasMethodExecuted = false;
     
     [SerializeField] private float minimalHeight;
@@ -76,6 +76,7 @@ public class Player : Sound
     private float bonusFish;
     public float starCount;
     private float currentLevel;
+    private float inventoryCoins;
     
     [SerializeField] private float threeStarFish;
     [SerializeField] private float twoStarFish;
@@ -85,6 +86,7 @@ public class Player : Sound
     [SerializeField] private bool isTwoStarFish;
     [SerializeField] private bool isOneStarFish;
     [SerializeField] Inventory inventory;
+    public int levelNumber;
 
     private UICharectorController controller;
    
@@ -93,7 +95,7 @@ public class Player : Sound
     public static Player Instance { get; set; }
     #endregion
 
-    public void EndLevel(int levelNumber, float fishCount)
+    public void EndLevel()
     {
         
         SaveProgress();
@@ -105,6 +107,10 @@ public class Player : Sound
     {
         SaveSystem.Save();
     }
+    public void LoadProgress()
+    {
+        SaveSystem.Load();
+    }
     
 
     private void Awake()
@@ -113,6 +119,7 @@ public class Player : Sound
     }
     private void Start()
     {
+        //LoadProgress();
         arrowsPool = new List<Arrow>();
         for(int i=0; i < arrowsCount; i++)
         {
@@ -122,7 +129,7 @@ public class Player : Sound
         }
         health.OnTakeHit += TalkeHit;
         totalLevelCoins=0;
-
+        inventoryCoins = inventory.coinsCount;
         buffReciever.OnBuffChanged += ApplyBuffs;
 
         //if (fish = fish_end)
@@ -134,56 +141,7 @@ public class Player : Sound
        
     }
     // Update is called once per frame
-    public void CalculateStars(int levelNumber, float fishCount)
-    {
-        if (fishCount >= threeStarFish)
-        {
-            starCount = 3;
-        }
-        else if (fishCount >= twoStarFish)
-        {
-            starCount = 2;
-        }
-        else if (fishCount >= oneStarFish)
-        {
-            starCount = 1;
-        }
-        else
-        {
-            starCount = 0;
-        }
-        if (!GameManager.Instance.levelStars.ContainsKey(levelNumber))
-        {
-            GameManager.Instance.levelStars[levelNumber] = Convert.ToInt32(starCount); // —охран€ем звезды дл€ уровн€
-        }
-    }
-    private void UpdateCoinsBasedOnStars(int levelNumber)
-    {
-        int coinsEarned = 0;
-
-       
-        if (GameManager.Instance.levelStars.TryGetValue(levelNumber, out int stars))
-        {
-           
-            switch (stars)
-            {
-                case 3:
-                    coinsEarned = 15;
-                    break;
-                case 2:
-                    coinsEarned = 10;
-                    break;
-                case 1:
-                    coinsEarned = 5;
-                    break;
-                default:
-                    coinsEarned = 0;
-                    break;
-            }
-        }
-
-        totalLevelCoins += coinsEarned; 
-    }
+   
 
     private void ApplyBuffs()
     {
@@ -328,6 +286,57 @@ public class Player : Sound
        
         //string message = $"“ип:{bonusFish.GetType().Name}";
         //Debug.Log(message);
+
+    }
+    public void CalculateStars(int levelNumber, float fishCount)
+    {
+        if (fishCount >= threeStarFish)
+        {
+            starCount = 3;
+        }
+        else if (fishCount >= twoStarFish)
+        {
+            starCount = 2;
+        }
+        else if (fishCount >= oneStarFish)
+        {
+            starCount = 1;
+        }
+        else
+        {
+            starCount = 0;
+        }
+        if (!GameManager.Instance.levelStars.ContainsKey(levelNumber))
+        {
+            GameManager.Instance.levelStars[levelNumber] = Convert.ToInt32(starCount); // —охран€ем звезды дл€ уровн€
+        }
+    }
+    public void UpdateCoinsBasedOnStars(int levelNumber)
+    {
+        int coinsEarned = 0;
+
+
+        if (GameManager.Instance.levelStars.TryGetValue(levelNumber, out int stars))
+        {
+
+            switch (stars)
+            {
+                case 3:
+                    coinsEarned = 15;
+                    break;
+                case 2:
+                    coinsEarned = 10;
+                    break;
+                case 1:
+                    coinsEarned = 5;
+                    break;
+                default:
+                    coinsEarned = 0;
+                    break;
+            }
+        }
+
+        totalLevelCoins += coinsEarned + Convert.ToInt32(inventoryCoins);
 
     }
     private void Movement()
@@ -487,6 +496,7 @@ public class Player : Sound
     public void Load(PlayerSaveData data)
     {
         starCount = (data.starOfEndLevel);//надо вызывать, когда начисл€ютс€ звЄзды
+        inventory.coinsCount= Convert.ToInt32(data.coinsCountOfEndScene);
         currentLevel = data.thisLevel;
     }
     #endregion

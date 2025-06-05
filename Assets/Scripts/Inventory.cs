@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class Inventory : MonoBehaviour
 {  
     [SerializeField]  public int coinsCount ;
+    //[SerializeField] Player player;
     [SerializeField] private TMP_Text coinsText;
     public BuffReciever buffReciever;
     private List<Item> items;
@@ -21,6 +22,7 @@ public class Inventory : MonoBehaviour
     public void Start()
     {
         GameManager.Instance.inventory = this;
+        //coinsCount = player.totalLevelCoins;
         coinsText.text = ": " + coinsCount.ToString(); // Инициализируем текст с текущим количеством монет
         items = new List<Item>();
         Debug.Log("Start work");
@@ -33,11 +35,13 @@ public class Inventory : MonoBehaviour
             var coin = GameManager.Instance.coinContainer[col.gameObject];
             if (!coin.IsCollected)
             {
-                coinsCount++; // Увеличиваем количество монет
-                UpdateCoinsText(); // Обновляем текст с количеством монет
+                coinsCount++;
+                
+
+                UpdateCoinsText();
 
                 coin.IsCollected = true;
-                coin.StartDestroy(); // Удаляем объект монеты
+                coin.StartDestroy(); 
 
             }
 
@@ -56,7 +60,7 @@ public class Inventory : MonoBehaviour
     }
     public void UpdateCoinsText()
     {
-        coinsText.text = ": " + coinsCount.ToString(); // Обновляем текстовое поле с количеством монет
+        coinsText.text = ": " + coinsCount.ToString(); 
     }
  
 

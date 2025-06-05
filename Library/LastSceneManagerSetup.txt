@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Resources/Sprites/Scenes/1Llevel.unity
+- path: Assets/Resources/Sprites/Scenes/2Level.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
