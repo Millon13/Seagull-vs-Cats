@@ -38,6 +38,8 @@ public class Inventory : MonoBehaviour
                 coinsCount++;
                 
 
+                
+
                 UpdateCoinsText();
 
                 coin.IsCollected = true;
@@ -49,6 +51,7 @@ public class Inventory : MonoBehaviour
 
 
         }
+        coinsCount += GameManager.Instance.extraLevelCoins;
         if (GameManager.Instance.itemsContainer.ContainsKey(col.gameObject))
         {
             var itemsComponent = GameManager.Instance.itemsContainer[col.gameObject];

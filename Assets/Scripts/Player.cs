@@ -86,7 +86,7 @@ public class Player : Sound
     [SerializeField] private bool isTwoStarFish;
     [SerializeField] private bool isOneStarFish;
     [SerializeField] Inventory inventory;
-    public int levelNumber;
+    
 
     private UICharectorController controller;
    

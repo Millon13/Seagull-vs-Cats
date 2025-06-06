@@ -20,8 +20,10 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Task task;
     public Player Player { get; set; }
-    public Inventory Inventory { get; set; }
+    //public Inventory Inventory { get; set; }
 
+    public int levelNumber;
+    public int extraLevelCoins;
     public Dictionary<GameObject, Health> healthContainer;
     public Dictionary<GameObject, Coin> coinContainer;
     public Dictionary<GameObject, BuffReciever> buffRecieverContainer;
@@ -47,16 +49,16 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        
-        BadEnding();
+        EndLevel();
+        //BadEnding();
        // GoodEnding();
     }
     public void EndLevel()
     {
 
         SaveProgress();
-        CalculateStars(Player.levelNumber);
-        UpdateCoinsBasedOnStars(Player.levelNumber);
+        CalculateStars(levelNumber);
+        UpdateCoinsBasedOnStars(levelNumber);
     }
     public void SaveProgress()
     {
@@ -99,7 +101,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        Player.totalLevelCoins += coinsEarned + Convert.ToInt32(Inventory.coinsCount);
+        extraLevelCoins += coinsEarned ;
 
     }
     private void Start()
