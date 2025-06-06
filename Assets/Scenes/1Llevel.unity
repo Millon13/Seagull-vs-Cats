@@ -1160,7 +1160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1135290157, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndLevel
+      value: NextLevel
       objectReference: {fileID: 0}
     - target: {fileID: 1135290157, guid: fabff23a39176834a9be65bb2c724c56, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

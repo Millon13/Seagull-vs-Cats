@@ -65,11 +65,27 @@ public class Inventory : MonoBehaviour
     {
         coinsText.text = ": " + coinsCount.ToString(); 
     }
- 
+
+    #region Save and Load
+    public void Save(ref InventorySaveData data)
+    {
+        data.levelCoinsCount = coinsCount;
+        
+    }
+    public void Load(InventorySaveData data)
+    {
+        coinsCount = Convert.ToInt32(data.levelCoinsCount);
+    }
+    #endregion
 
 
-  
 }
+[System.Serializable]
 
 
+public struct InventorySaveData
+{
+    public float levelCoinsCount;
+  
 
+}

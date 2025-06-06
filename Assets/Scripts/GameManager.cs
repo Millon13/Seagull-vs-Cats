@@ -45,13 +45,22 @@ public class GameManager : MonoBehaviour
         itemsContainer = new Dictionary<GameObject, ItemComponent>();
         levelStars = new Dictionary<int, int>();
         //fishContainer = new Dictionary<GameObject, Fish>();
-        LoadProgress();
+        //LoadProgress();
     }
     private void Update()
     {
-        EndLevel();
+        if (Input.GetKey(KeyCode.E))
+        {
+            SaveProgress();
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            LoadProgress();
+        }
+
+        // EndLevel();
         //BadEnding();
-       // GoodEnding();
+        // GoodEnding();
     }
     public void EndLevel()
     {

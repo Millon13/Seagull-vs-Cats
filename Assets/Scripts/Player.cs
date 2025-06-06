@@ -85,7 +85,7 @@ public class Player : Sound
     [SerializeField] private bool isThreeStarFish;
     [SerializeField] private bool isTwoStarFish;
     [SerializeField] private bool isOneStarFish;
-    [SerializeField] Inventory inventory;
+    //[SerializeField] Inventory inventory;
     
 
     private UICharectorController controller;
@@ -114,7 +114,7 @@ public class Player : Sound
         }
         health.OnTakeHit += TalkeHit;
         totalLevelCoins=0;
-        inventoryCoins = inventory.coinsCount;
+        //inventoryCoins = inventory.coinsCount;
         buffReciever.OnBuffChanged += ApplyBuffs;
 
         //if (fish = fish_end)
@@ -425,13 +425,13 @@ public class Player : Sound
     public void Save(ref PlayerSaveData data)
     {
         data.starOfEndLevel= starCount;
-        data.coinsCountOfEndScene = inventory.coinsCount;
+        //data.coinsCountOfEndScene = inventory.coinsCount;
         data.thisLevel = currentLevel;
     }
     public void Load(PlayerSaveData data)
     {
         starCount = (data.starOfEndLevel);//надо вызывать, когда начисл€ютс€ звЄзды
-        inventory.coinsCount= Convert.ToInt32(data.coinsCountOfEndScene);
+        //inventory.coinsCount= Convert.ToInt32(data.coinsCountOfEndScene);
         currentLevel = data.thisLevel;
     }
     #endregion
@@ -442,7 +442,7 @@ public struct PlayerSaveData
 {
     public float thisLevel;
     public float starOfEndLevel;
-    public float coinsCountOfEndScene;
+    //public float coinsCountOfEndScene;
 
 }
 
