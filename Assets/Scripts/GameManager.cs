@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Task task;
     public Player Player { get; set; }
-    //public Inventory Inventory { get; set; }
+    public Inventory Inventory { get; set; }
 
     public int levelNumber;
     public int extraLevelCoins;
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         itemsContainer = new Dictionary<GameObject, ItemComponent>();
         levelStars = new Dictionary<int, int>();
         //fishContainer = new Dictionary<GameObject, Fish>();
-        //LoadProgress();
+        LoadProgress();
     }
     private void Update()
     {
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             LoadProgress();
         }
 
-        // EndLevel();
+        EndLevel();
         
        // GoodEnding();
     }

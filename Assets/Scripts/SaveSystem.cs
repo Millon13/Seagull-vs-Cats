@@ -28,6 +28,23 @@ public class SaveSystem
     }
     private static void HandleSaveData()
     {
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager instance is null!");
+            return;
+        }
+
+        if (GameManager.Instance.Player == null)
+        {
+            Debug.LogError("Player is null!");
+            return;
+        }
+
+        if (GameManager.Instance.inventory == null)
+        {
+            Debug.LogError("Inventory is null!");
+            return;
+        }
         GameManager.Instance.Player.Save(ref saveData.PlayerData);
         GameManager.Instance.inventory.Save(ref saveData.InventoryData);
     }
