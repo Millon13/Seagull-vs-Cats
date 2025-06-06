@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\GroundDetection.cs" />
     <Compile Include="Assets\Scripts\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\SaveSystemPrefs.cs" />
     <Compile Include="Assets\UJoystick\Content\Script\Core\bl_Joystick.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
@@ -108,7 +109,6 @@
     <Compile Include="Assets\Scripts\Task.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\ItemBase.cs" />
-    <Compile Include="Assets\Scripts\SaveSystemPrefs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
