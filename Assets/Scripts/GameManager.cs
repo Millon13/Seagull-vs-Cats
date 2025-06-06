@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Task task;
     public Player Player { get; set; }
+    public Inventory Inventory { get; set; }
 
     public Dictionary<GameObject, Health> healthContainer;
     public Dictionary<GameObject, Coin> coinContainer;
@@ -42,11 +43,64 @@ public class GameManager : MonoBehaviour
         itemsContainer = new Dictionary<GameObject, ItemComponent>();
         levelStars = new Dictionary<int, int>();
         //fishContainer = new Dictionary<GameObject, Fish>();
+        LoadProgress();
     }
     private void Update()
     {
+        
         BadEnding();
        // GoodEnding();
+    }
+    public void EndLevel()
+    {
+
+        SaveProgress();
+        CalculateStars(Player.levelNumber);
+        UpdateCoinsBasedOnStars(Player.levelNumber);
+    }
+    public void SaveProgress()
+    {
+        SaveSystem.Save();
+    }
+    public void LoadProgress()
+    {
+        SaveSystem.Load();
+    }
+    public void CalculateStars(int levelNumber)
+    {
+       
+        if (!GameManager.Instance.levelStars.ContainsKey(levelNumber))
+        {
+            GameManager.Instance.levelStars[levelNumber] = Convert.ToInt32(Player.starCount); // Сохраняем звезды для уровня
+        }
+    }
+    public void UpdateCoinsBasedOnStars(int levelNumber)
+    {
+        int coinsEarned = 0;
+
+
+        if (GameManager.Instance.levelStars.TryGetValue(levelNumber, out int stars))
+        {
+
+            switch (stars)
+            {
+                case 3:
+                    coinsEarned = 15;
+                    break;
+                case 2:
+                    coinsEarned = 10;
+                    break;
+                case 1:
+                    coinsEarned = 5;
+                    break;
+                default:
+                    coinsEarned = 0;
+                    break;
+            }
+        }
+
+        Player.totalLevelCoins += coinsEarned + Convert.ToInt32(Inventory.coinsCount);
+
     }
     private void Start()
     {

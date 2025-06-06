@@ -95,22 +95,7 @@ public class Player : Sound
     public static Player Instance { get; set; }
     #endregion
 
-    public void EndLevel()
-    {
-        
-        SaveProgress();
-        CalculateStars( levelNumber, fishCount);
-        UpdateCoinsBasedOnStars(levelNumber);
-    }
-  
-    public void SaveProgress()
-    {
-        SaveSystem.Save();
-    }
-    public void LoadProgress()
-    {
-        SaveSystem.Load();
-    }
+    
     
 
     private void Awake()
@@ -288,57 +273,7 @@ public class Player : Sound
         //Debug.Log(message);
 
     }
-    public void CalculateStars(int levelNumber, float fishCount)
-    {
-        if (fishCount >= threeStarFish)
-        {
-            starCount = 3;
-        }
-        else if (fishCount >= twoStarFish)
-        {
-            starCount = 2;
-        }
-        else if (fishCount >= oneStarFish)
-        {
-            starCount = 1;
-        }
-        else
-        {
-            starCount = 0;
-        }
-        if (!GameManager.Instance.levelStars.ContainsKey(levelNumber))
-        {
-            GameManager.Instance.levelStars[levelNumber] = Convert.ToInt32(starCount); // Сохраняем звезды для уровня
-        }
-    }
-    public void UpdateCoinsBasedOnStars(int levelNumber)
-    {
-        int coinsEarned = 0;
-
-
-        if (GameManager.Instance.levelStars.TryGetValue(levelNumber, out int stars))
-        {
-
-            switch (stars)
-            {
-                case 3:
-                    coinsEarned = 15;
-                    break;
-                case 2:
-                    coinsEarned = 10;
-                    break;
-                case 1:
-                    coinsEarned = 5;
-                    break;
-                default:
-                    coinsEarned = 0;
-                    break;
-            }
-        }
-
-        totalLevelCoins += coinsEarned + Convert.ToInt32(inventoryCoins);
-
-    }
+    
     private void Movement()
     {
         animator.SetBool("isGround", groundDetection.isGround);
