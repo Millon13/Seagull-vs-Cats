@@ -12,12 +12,13 @@ public class SaveSystem
     [System.Serializable]
     public struct SaveData
     {
-        public PlayerSaveData PlayerData;
+        //public PlayerSaveData PlayerData;
         public InventorySaveData InventoryData;
     }
     public static string SaveFileName()
     {
-        string saveFile = Path.Combine(Application.persistentDataPath, "save.save");
+       // string saveFile = Path.Combine(Application.persistentDataPath, "save.save");
+        string saveFile =Application.persistentDataPath+"/save"+".save";
         return saveFile;
     }
 
@@ -45,7 +46,9 @@ public class SaveSystem
             Debug.LogError("Inventory is null!");
             return;
         }
-        GameManager.Instance.Player.Save(ref saveData.PlayerData);
+        
+
+        //GameManager.Instance.Player.Save(ref saveData.PlayerData);
         GameManager.Instance.inventory.Save(ref saveData.InventoryData);
     }
     public static void Load()
@@ -61,7 +64,7 @@ public class SaveSystem
     }
     private static void HandleLoadData()
     {
-        GameManager.Instance.Player.Load(saveData.PlayerData);//тут нуль референс
+        //GameManager.Instance.Player.Load(saveData.PlayerData);//тут нуль референс
         GameManager.Instance.inventory.Load(saveData.InventoryData);
     }
 }

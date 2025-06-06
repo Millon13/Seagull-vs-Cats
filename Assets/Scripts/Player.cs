@@ -101,6 +101,8 @@ public class Player : Sound
     private void Awake()
     {
         Instance = this;
+      
+
     }
     private void Start()
     {
