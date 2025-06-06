@@ -47,8 +47,10 @@ public class GameManager : MonoBehaviour
         //fishContainer = new Dictionary<GameObject, Fish>();
         //LoadProgress();
     }
-    private void Update()
+    private void FixedUpdate()
     {
+        
+    
         if (Input.GetKey(KeyCode.Z))
         {
             SaveProgress();
@@ -60,7 +62,7 @@ public class GameManager : MonoBehaviour
 
         // EndLevel();
         //BadEnding();
-        // GoodEnding();
+       // GoodEnding();
     }
     public void EndLevel()
     {
