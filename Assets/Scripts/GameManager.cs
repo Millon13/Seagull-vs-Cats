@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
         //fishContainer = new Dictionary<GameObject, Fish>();
         //LoadProgress();
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        
+        BadEnding();
     
         if (Input.GetKey(KeyCode.Z))
         {
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         }
 
         // EndLevel();
-        //BadEnding();
+        
        // GoodEnding();
     }
     public void EndLevel()
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
         SaveProgress();
         CalculateStars(levelNumber);
-        UpdateCoinsBasedOnStars(levelNumber);
+        //UpdateCoinsBasedOnStars(levelNumber);
     }
     public void SaveProgress()
     {
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
             GameManager.Instance.levelStars[levelNumber] = Convert.ToInt32(Player.starCount); // Сохраняем звезды для уровня
         }
     }
-    public void UpdateCoinsBasedOnStars(int levelNumber)
+    /*public void UpdateCoinsBasedOnStars(int levelNumber)
     {
         int coinsEarned = 0;
 
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
 
         extraLevelCoins += coinsEarned ;
 
-    }
+    }*/
     private void Start()
     {
         badEndPanel.gameObject.SetActive(false);
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
             otherPanel.gameObject.SetActive(false);
             Time.timeScale = 1;
             animatorX.SetBool("IsPaused", true);
-            EndSave();
+            //EndSave();
             //Time.timeScale = 1;
 
         }
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
             otherPanel.gameObject.SetActive(false);
             Time.timeScale = 1;
             animatorX.SetBool("IsPaused", true);
-            EndSave();
+            //EndSave();
             //Time.timeScale = 1;
 
         }
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
             otherPanel.gameObject.SetActive(false);
             Time.timeScale = 1;
             animatorX.SetBool("IsPaused", true);
-            EndSave();
+            //EndSave();
             //Time.timeScale = 1;
 
         }
@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
                 otherPanel.gameObject.SetActive(false);
                 Time.timeScale = 1;
                 animatorX.SetBool("IsPaused", true);
-                EndSave();
+                //EndSave();
                 //Time.timeScale = 1;
             }
         }
@@ -228,10 +228,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void EndSave()
+    /*public void EndSave()
     {
         SaveSystem.Save();
-    }
+    }*/
     public void Upgrade()
     {
         // coinContainer

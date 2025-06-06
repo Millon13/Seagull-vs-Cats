@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
         //coinsCount = player.totalLevelCoins;
         coinsText.text = ": " + coinsCount.ToString(); // Инициализируем текст с текущим количеством монет
         items = new List<Item>();
-        Debug.Log("Start work");
+       
     }
 
     public void OnTriggerEnter2D(Collider2D col)
