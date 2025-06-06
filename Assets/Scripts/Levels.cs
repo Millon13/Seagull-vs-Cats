@@ -12,7 +12,7 @@ public class Levels : Sound
     }
     public void OnClickFirst()
     {
-        SceneManager.LoadScene(11);
+        SceneManager.LoadScene(1);
     }
     public void OnClickSecond()
     {

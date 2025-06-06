@@ -425,13 +425,11 @@ public class Player : Sound
     public void Save(ref PlayerSaveData data)
     {
         data.starOfEndLevel= starCount;
-        //data.coinsCountOfEndScene = inventory.coinsCount;
         data.thisLevel = currentLevel;
     }
     public void Load(PlayerSaveData data)
     {
         starCount = (data.starOfEndLevel);//надо вызывать, когда начисл€ютс€ звЄзды
-        //inventory.coinsCount= Convert.ToInt32(data.coinsCountOfEndScene);
         currentLevel = data.thisLevel;
     }
     #endregion
