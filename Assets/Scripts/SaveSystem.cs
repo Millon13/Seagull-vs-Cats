@@ -3,20 +3,21 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveSystem 
+public class SaveSystem
 {
 
 
     private static SaveData saveData = new SaveData();
 
     [System.Serializable]
-    public  struct SaveData
+    public struct SaveData
     {
         public PlayerSaveData PlayerData;
+        public InventorySaveData InventoryData;
     }
     public static string SaveFileName()
     {
-        string saveFile = Application.persistentDataPath + "/save" + ".save";
+        string saveFile = Path.Combine(Application.persistentDataPath, "save.save");
         return saveFile;
     }
 
@@ -28,9 +29,15 @@ public class SaveSystem
     private static void HandleSaveData()
     {
         GameManager.Instance.Player.Save(ref saveData.PlayerData);
+        GameManager.Instance.inventory.Save(ref saveData.InventoryData);
     }
     public static void Load()
     {
+        if (!File.Exists(SaveFileName()))
+        {
+            Debug.LogError("Save file does not exist!");
+            return; 
+        }
         string saveContent = File.ReadAllText(SaveFileName());
         saveData = JsonUtility.FromJson<SaveData>(saveContent);
         HandleLoadData();
@@ -38,5 +45,6 @@ public class SaveSystem
     private static void HandleLoadData()
     {
         GameManager.Instance.Player.Load(saveData.PlayerData);
+        GameManager.Instance.inventory.Load(saveData.InventoryData);
     }
 }
