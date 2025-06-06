@@ -57,11 +57,11 @@ public class SaveSystem
         }
         string saveContent = File.ReadAllText(SaveFileName());
         saveData = JsonUtility.FromJson<SaveData>(saveContent);
-        HandleLoadData();
+        HandleLoadData();//тут нуль референс
     }
     private static void HandleLoadData()
     {
-        GameManager.Instance.Player.Load(saveData.PlayerData);
+        GameManager.Instance.Player.Load(saveData.PlayerData);//тут нуль референс
         GameManager.Instance.inventory.Load(saveData.InventoryData);
     }
 }
