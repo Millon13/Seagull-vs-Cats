@@ -17,8 +17,8 @@ public class SaveSystem
     }
     public static string SaveFileName()
     {
-       // string saveFile = Path.Combine(Application.persistentDataPath, "save.save");
-        string saveFile =Application.persistentDataPath+"/save"+".save";
+       string saveFile = Path.Combine(Application.persistentDataPath, "save.save");
+       // string saveFile =Application.persistentDataPath+"/save"+".save";
         return saveFile;
     }
 
@@ -35,11 +35,7 @@ public class SaveSystem
             return;
         }
 
-        if (GameManager.Instance.Player == null)
-        {
-            Debug.LogError("Player is null!");
-            return;
-        }
+        
 
         if (GameManager.Instance.inventory == null)
         {
