@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject badEndPanel;
     [SerializeField] private GameObject otherPanel;
     [SerializeField] private Animator animatorX;
-    
+    [SerializeField] private bool isProgressLoaded;
     [SerializeField] private Task task;
     public Player Player { get; set; }
-    public Inventory Inventory { get; set; }
+    //public Inventory Inventory { get; set; }
 
     public int levelNumber;
     public int extraLevelCoins;
@@ -45,32 +45,40 @@ public class GameManager : MonoBehaviour
         itemsContainer = new Dictionary<GameObject, ItemComponent>();
         levelStars = new Dictionary<int, int>();
         //fishContainer = new Dictionary<GameObject, Fish>();
-        //LoadProgress();//тут нуль референс
+       
     }
     private void Update()
     {
         BadEnding();
-    
-        if (Input.GetKey(KeyCode.Z))
+
+        /*if (Input.GetKey(KeyCode.Z))
         {
             SaveProgress();
         }
         if (Input.GetKey(KeyCode.X))
         {
             LoadProgress();
-        }
+        }*/
+        /*isProgressLoaded = true;
+        if (isProgressLoaded )
+        {
+            LoadProgress();
+            isProgressLoaded = false;
 
+        }*/
         
-        
-       // GoodEnding();
+
+
+        // GoodEnding();
     }
     public void EndLevel()
     {
 
         SaveProgress();
-        CalculateStars(levelNumber);
+        //CalculateStars(levelNumber);
         //UpdateCoinsBasedOnStars(levelNumber);
     }
+
     public void SaveProgress()
     {
         SaveSystem.Save();
@@ -79,14 +87,14 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.Load();//тут нуль референс
     }
-    public void CalculateStars(int levelNumber)
+    /*public void CalculateStars(int levelNumber)
     {
        
         if (!GameManager.Instance.levelStars.ContainsKey(levelNumber))
         {
             GameManager.Instance.levelStars[levelNumber] = Convert.ToInt32(Player.starCount); // Сохраняем звезды для уровня
         }
-    }
+    }*/
     /*public void UpdateCoinsBasedOnStars(int levelNumber)
     {
         int coinsEarned = 0;
@@ -120,8 +128,15 @@ public class GameManager : MonoBehaviour
         badEndPanel.gameObject.SetActive(false);
         goodEndPanel.gameObject.SetActive(false);
         //otherPanel.gameObject.SetActive(true);
+        StartCoroutine(LoadStart());
+        //LoadProgress();
+
+    }
+    private IEnumerator LoadStart()
+    {
+        yield return new WaitForEndOfFrame(); 
        
-        
+        LoadProgress(); 
     }
     public void OnClickPause()
     {

@@ -75,6 +75,7 @@ public class Inventory : MonoBehaviour
     public void Load(InventorySaveData data)
     {
         coinsCount = Convert.ToInt32(data.levelCoinsCount);
+        UpdateCoinsText();
     }
     #endregion
 
