@@ -59,6 +59,7 @@ public class ItemBase : ScriptableObject
         return null;*/
 
     }
+   
 }
 [System.Serializable]
 public class Item
@@ -93,6 +94,10 @@ public class Item
     public float Value
     {
         get { return value; }
+    }
+    public void UpdateValue(float upgradeCount)
+    {
+        value += upgradeCount;
     }
 
 }
