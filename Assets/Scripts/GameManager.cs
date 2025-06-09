@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private bool isPaused;
     public GameObject cross;
-    
+    public BuffType buffType;
+    public BuffReciever buffReciever;
     private void Awake()
     {
         Instance = this;
@@ -49,7 +50,8 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        BadEnding();
+        if (SceneManager.GetActiveScene().name != "UpdateShop")
+            BadEnding();
 
         /*if (Input.GetKey(KeyCode.Z))
         {
@@ -66,10 +68,20 @@ public class GameManager : MonoBehaviour
             isProgressLoaded = false;
 
         }*/
-        
 
+
+      
 
         // GoodEnding();
+    }
+    public void UpgradeThisBuff(BuffType buffType)
+    { 
+        var buff = buffReciever.Buffs.Find(b => b.type == buffType);
+        if (buff != null)
+        {
+           // buff.additiveBonus = BuffUpgradeButton.upgradeCount;
+        }
+
     }
     public void EndLevel()
     {
@@ -125,10 +137,17 @@ public class GameManager : MonoBehaviour
     }*/
     private void Start()
     {
-        badEndPanel.gameObject.SetActive(false);
-        goodEndPanel.gameObject.SetActive(false);
-        //otherPanel.gameObject.SetActive(true);
         StartCoroutine(LoadStart());
+        if (SceneManager.GetActiveScene().name != "UpdateShop")
+        {
+            badEndPanel.gameObject.SetActive(false);
+            goodEndPanel.gameObject.SetActive(false);
+
+        }
+            
+        
+        //otherPanel.gameObject.SetActive(true);
+        
         //LoadProgress();
 
     }

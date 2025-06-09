@@ -300,11 +300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4080513721552340759, guid: 92d98164f19dd854fb42d525a475799c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1858
+      value: -1735
       objectReference: {fileID: 0}
     - target: {fileID: 4080513721552340759, guid: 92d98164f19dd854fb42d525a475799c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 470
+      value: 396
       objectReference: {fileID: 0}
     - target: {fileID: 4080513721552340759, guid: 92d98164f19dd854fb42d525a475799c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1024,6 +1024,7 @@ MonoBehaviour:
   buffType: 2
   buffReciever: {fileID: 385705104}
   upgradeAmount: 5
+  upgradeCount: 0
   initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 385705106}
@@ -1261,6 +1262,7 @@ MonoBehaviour:
   buffType: 3
   buffReciever: {fileID: 618858355}
   upgradeAmount: 5
+  upgradeCount: 0
   initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 618858359}
@@ -1346,7 +1348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706452379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -958.2, y: -540, z: 0}
+  m_LocalPosition: {x: -915, y: -470, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1654,7 +1656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14, y: 459.4}
+  m_AnchoredPosition: {x: -14, y: 382}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831365282
@@ -1882,6 +1884,7 @@ MonoBehaviour:
   buffType: 4
   buffReciever: {fileID: 898768143}
   upgradeAmount: 5
+  upgradeCount: 0
   initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 898768147}
@@ -2040,6 +2043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 184095620809367911, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
+      propertyPath: inventoryPanel
+      value: 
+      objectReference: {fileID: 38849475}
     - target: {fileID: 184095620809367912, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2709,7 +2716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 881, y: 461}
+  m_AnchoredPosition: {x: 832, y: 384}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159994951
@@ -3266,7 +3273,7 @@ PrefabInstance:
       objectReference: {fileID: 921666671}
     - target: {fileID: 3363249953794415668, guid: be5ab021fb659d34abcfdf572b19c89d, type: 3}
       propertyPath: coinsCount
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3363249953794415668, guid: be5ab021fb659d34abcfdf572b19c89d, type: 3}
       propertyPath: buffReciever
@@ -3885,6 +3892,7 @@ MonoBehaviour:
   buffType: 1
   buffReciever: {fileID: 2047238019}
   upgradeAmount: 5
+  upgradeCount: 0
   initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 2047238023}

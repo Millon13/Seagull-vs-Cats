@@ -13,6 +13,7 @@ public class BuffUpgradeButton : MonoBehaviour
     public BuffType buffType;
     public BuffReciever buffReciever;
     public float upgradeAmount;
+    public float upgradeCount;
     public int initialCoinsCount;
     public bool isUpgraded=false;
     [SerializeField] private UpgradeBar upgradeBar;
@@ -21,9 +22,7 @@ public class BuffUpgradeButton : MonoBehaviour
     {
          if (inventory != null)
          {
-        
             initialCoinsCount = inventory.coinsCount;
-        
          }
     }
    
@@ -33,49 +32,54 @@ public class BuffUpgradeButton : MonoBehaviour
          ChargeMoney();
          UpgradeBuff(buffType, upgradeAmount);
          upgradeBar.UpdateButtonState();
-         
-         
-         
-
     }
 
     public void UpgradeBuff(BuffType buffType, float upgradeAmount)
     {
         if (SceneManager.GetActiveScene().name == "UpdateShop")
         {
-
+            isUpgraded = false;
             if (inventory.coinsCount >= 10) // Используем coinsCount из inventory
             {
-
                 isUpgraded = true;
-               
-                
 
-                var buff = buffReciever.Buffs.Find(b => b.type == buffType);
-                if (buff != null)
+               // var buff = buffReciever.Buffs.Find(b => b.type == buffType);
+                //if (buff != null)
                 {
-                    buff.additiveBonus += upgradeAmount;
+                    upgradeCount += upgradeAmount;
+                    //buff.additiveBonus = upgradeCount;
                     upgradeBar.ApplyBuff();
                 }
-                
-
             } 
             else
             {
                 isUpgraded = false;
                 Debug.Log("Not enough coins to upgrade.");
             }
-           
         }
     }
     public void ChargeMoney()
     {
-        if (inventory.coinsCount >= 10) // Используем coinsCount из inventory
+        if (isUpgraded) // Используем coinsCount из inventory
         {
-
             inventory.coinsCount -= 10;
             inventory.UpdateCoinsText();
         }
 
     }
+    #region Save and Load
+    public void Save(ref UpdateSaveData data)
+    {
+        data.amountOfUpgrate = upgradeAmount;
+    }
+    public void Load(UpdateSaveData data)
+    {
+        upgradeAmount = Convert.ToInt32(data.amountOfUpgrate);
+    }
+    #endregion
+}
+[System.Serializable]
+public struct UpdateSaveData
+{
+    public float amountOfUpgrate;
 }
