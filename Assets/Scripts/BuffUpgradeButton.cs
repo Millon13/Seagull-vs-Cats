@@ -71,11 +71,11 @@ public class BuffUpgradeButton : MonoBehaviour
     #region Save and Load
     public void Save(ref UpdateSaveData data)
     {
-        data.amountOfUpgrate = upgradeAmount;
+        data.amountOfUpgrate = upgradeCount;
     }
     public void Load(UpdateSaveData data)
     {
-        upgradeAmount = Convert.ToInt32(data.amountOfUpgrate);
+        upgradeCount = Convert.ToInt32(data.amountOfUpgrate);
     }
     #endregion
 }
