@@ -28,10 +28,12 @@ public class UpgradeBar : MonoBehaviour
                // Подписываемся на событие нажатия кнопки
              mainButton.onClick.AddListener(ButtonClick);
         }
-
+        UpdateButtonState();
     }
+   
     public void UpdateButtonState()
     {
+
         if (buffUpgradeButton.isUpgraded)
         {
             mainButton.interactable = true;

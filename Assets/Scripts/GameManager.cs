@@ -35,8 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     private bool isPaused;
     public GameObject cross;
-    public BuffType buffType;
-    public BuffReciever buffReciever;
+   
     private void Awake()
     {
         Instance = this;
@@ -76,11 +75,11 @@ public class GameManager : MonoBehaviour
     }
     public void UpgradeThisBuff(BuffType buffType)
     { 
-        var buff = buffReciever.Buffs.Find(b => b.type == buffType);
+       /* var buff = BuffReciever.Buffs.Find(b => b.type == buffType);
         if (buff != null)
         {
            // buff.additiveBonus = BuffUpgradeButton.upgradeCount;
-        }
+        }*/
 
     }
     public void EndLevel()

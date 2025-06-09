@@ -1025,7 +1025,6 @@ MonoBehaviour:
   buffReciever: {fileID: 385705104}
   upgradeAmount: 5
   upgradeCount: 0
-  initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 385705106}
 --- !u!114 &385705106
@@ -1263,7 +1262,6 @@ MonoBehaviour:
   buffReciever: {fileID: 618858355}
   upgradeAmount: 5
   upgradeCount: 0
-  initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 618858359}
 --- !u!114 &618858357
@@ -1348,8 +1346,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706452379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -915, y: -470, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -920.4868, y: -469.4, z: 0}
+  m_LocalScale: {x: 0.8572, y: 0.6829, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1229387972}
@@ -1638,7 +1636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &831365281
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1885,7 +1883,6 @@ MonoBehaviour:
   buffReciever: {fileID: 898768143}
   upgradeAmount: 5
   upgradeCount: 0
-  initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 898768147}
 --- !u!114 &898768145
@@ -3893,7 +3890,6 @@ MonoBehaviour:
   buffReciever: {fileID: 2047238019}
   upgradeAmount: 5
   upgradeCount: 0
-  initialCoinsCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 2047238023}
 --- !u!114 &2047238021

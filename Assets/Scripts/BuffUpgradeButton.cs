@@ -14,7 +14,7 @@ public class BuffUpgradeButton : MonoBehaviour
     public BuffReciever buffReciever;
     public float upgradeAmount;
     public float upgradeCount;
-    public int initialCoinsCount;
+   // public int initialCoinsCount;
     public bool isUpgraded=false;
     [SerializeField] private UpgradeBar upgradeBar;
 
@@ -22,7 +22,7 @@ public class BuffUpgradeButton : MonoBehaviour
     {
          if (inventory != null)
          {
-            initialCoinsCount = inventory.coinsCount;
+            //initialCoinsCount = inventory.coinsCount;
          }
     }
    
@@ -30,6 +30,7 @@ public class BuffUpgradeButton : MonoBehaviour
     {
 
          ChargeMoney();
+         isUpgraded = false;
          UpgradeBuff(buffType, upgradeAmount);
          upgradeBar.UpdateButtonState();
     }
@@ -38,7 +39,7 @@ public class BuffUpgradeButton : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "UpdateShop")
         {
-            isUpgraded = false;
+            
             if (inventory.coinsCount >= 10) // Используем coinsCount из inventory
             {
                 isUpgraded = true;
