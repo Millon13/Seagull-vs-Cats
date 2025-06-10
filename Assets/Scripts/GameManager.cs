@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<int, int> levelStars;
     //public Dictionary<GameObject, Fish> fishContainer;
     [HideInInspector] public Inventory inventory;
+    [HideInInspector] public BuffUpgradeButton upgrade;
     public ItemBase itemDataBase;
     public GameObject player;
     private bool isPaused;
