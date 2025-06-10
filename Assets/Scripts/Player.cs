@@ -141,7 +141,7 @@ public class Player : Sound
         var fishBuff = buffReciever.Buffs.Find(t => t.type == BuffType.Fish);
  
         
-        bonusForce = forceBuff == null ? 0 : forceBuff.additiveBonus;
+        bonusForce = forceBuff == null ? 0 : forceBuff.additiveBonus/*+BuffUpgradeButton.upgradeCount*/;
         bonusDamage = damageBuff == null ? 0 : damageBuff.additiveBonus;
         bonusSpeed = speedBuff == null ? 0 : speedBuff.additiveBonus;
         bonusFish = fishBuff == null ? 0 : fishBuff.additiveBonus;

@@ -91,13 +91,16 @@ public class Item
         get { return type; }
     }
     [SerializeField] private float value;
+    
     public float Value
     {
+        
         get { return value; }
     }
-    public void UpdateValue(float upgradeCount)
+    /*public void UpdateValue(float upgradeCount)
     {
         value += upgradeCount;
-    }
+    }*/
+    
 
 }
