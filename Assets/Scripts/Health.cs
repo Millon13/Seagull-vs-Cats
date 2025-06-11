@@ -10,7 +10,9 @@ public class Health : MonoBehaviour
     [SerializeField] private Animator animator;
     public Action<int, GameObject> OnTakeHit;
     public Player player;
-
+    [SerializeField] private BuffUpgradeButton buffUpgradeButton;
+  
+    private float upgradeCount;
     //public Action<int, GameObject> OnAddHealth;
     public int CurrentHealth
     {
@@ -55,7 +57,7 @@ public class Health : MonoBehaviour
     */
     public void AddHealth()
     {
-        health += Convert.ToInt32(player.bonusHealth);
+        health += Convert.ToInt32(player.bonusHealth+player.upgradeCount);
         if (health > 100)
             health = 100;
        // if (OnAddHealth != null)
