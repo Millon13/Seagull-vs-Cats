@@ -20,12 +20,14 @@ public class BuffUpgradeButton : MonoBehaviour
 
     public void Start()
     {
+
          if (inventory != null)
          {
             //initialCoinsCount = inventory.coinsCount;
          }
     }
-   
+
+
     public void OnUpgradeButtonClicked()
     {
 
