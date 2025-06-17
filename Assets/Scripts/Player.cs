@@ -119,7 +119,7 @@ public class Player : Sound
         health.OnTakeHit += TalkeHit;
         totalLevelCoins=0;
         //inventoryCoins = inventory.coinsCount;
-        upgradeCount=buffUpgradeButton.upgradeCount;
+       // upgradeCount=buffUpgradeButton.upgradeCount;
         buffReciever.OnBuffChanged += ApplyBuffs;
 
         //if (fish = fish_end)
