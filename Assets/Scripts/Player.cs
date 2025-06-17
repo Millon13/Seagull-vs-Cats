@@ -124,15 +124,18 @@ public class Player : Sound
 
         //if (fish = fish_end)
         levelsStars.level = currentLevel;
-
+        StartCoroutine(ApplyStart());
         
         
         PlaySound(2);
        
-    }
-    // Update is called once per frame
-   
 
+
+    }
+
+    // Update is called once per frame
+
+    
     private void ApplyBuffs()
     {
         //bonusHealth = 0;
@@ -156,6 +159,21 @@ public class Player : Sound
 
        
        
+    }
+    private IEnumerator ApplyStart()
+    {
+
+        yield return new WaitForEndOfFrame();
+        ApplySaveBuffs();
+        
+    }
+    private void ApplySaveBuffs()
+    {
+        bonusForce += upgradeCount;
+        bonusDamage += upgradeCount;
+        bonusHealth += upgradeCount;
+        bonusSpeed += upgradeCount;
+
     }
     private void ApplyHealths()
     { 
@@ -205,7 +223,7 @@ public class Player : Sound
     {
         if ( groundDetection.isGround)
         {
-            rigidbd.AddForce(Vector2.up * (force+bonusForce+ upgradeCount), ForceMode2D.Impulse);
+            rigidbd.AddForce(Vector2.up * (force+bonusForce), ForceMode2D.Impulse);
             animator.SetTrigger("StartJump");
             isJumping = true;
             PlaySound(0, random: true);
@@ -311,7 +329,7 @@ public class Player : Sound
             //transform.Translate(Vector2.right * Time.deltaTime*speed);
         }*/
         movejoystick = joystick.Horizontal;
-        direction = new Vector2(movejoystick*(speed+bonusSpeed+upgradeCount),rigidbd.velocity.y);
+        direction = new Vector2(movejoystick*(speed+bonusSpeed),rigidbd.velocity.y);
         //direction *= speed;
         //direction.y = rigidbd.velocity.y;//чтобы состовляющая по оси у не стала равна 0
         if(!isBlockMovement)
@@ -363,7 +381,7 @@ public class Player : Sound
         
         currentArrow.SetImpulse
             (Vector2.right, spriteRenderer.flipX ?
-            -force * shootForce : force * shootForce, (int)bonusDamage + (int)upgradeCount, this);//trouble
+            -force * shootForce : force * shootForce, (int)bonusDamage , this);//trouble
       //  Debug.Log("Shoot/ SetImpulse(Vector2.right, spriteRenderer.flipX ? -force * shootForce : force * shootForce, (int)bonusDamage, this)");
         StartCoroutine(ReTime());
         //Debug.Log("Shoot/StartCoroutine(ReTime())");

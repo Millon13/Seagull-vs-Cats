@@ -15,7 +15,7 @@ public class BuffUpgradeButton : MonoBehaviour
     public float upgradeAmount;
     public float upgradeCount;
    // public int initialCoinsCount;
-    public bool isUpgraded=false;
+    public bool isUpgraded;
     [SerializeField] private UpgradeBar upgradeBar;
 
     public void Start()
@@ -32,7 +32,7 @@ public class BuffUpgradeButton : MonoBehaviour
     {
 
          ChargeMoney();
-         isUpgraded = false;
+         
          UpgradeBuff(buffType, upgradeAmount);
          upgradeBar.UpdateButtonState();
     }

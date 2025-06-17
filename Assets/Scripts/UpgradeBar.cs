@@ -17,6 +17,7 @@ public class UpgradeBar : MonoBehaviour
     [SerializeField] private BuffUpgradeButton buffUpgradeButton;
     void Start()
     {
+        StartCoroutine(UpdateButtState());
         if (updateBar == null)
         {
             Debug.LogError("UpdateBar Image is not assigned!");
@@ -28,9 +29,15 @@ public class UpgradeBar : MonoBehaviour
                // Подписываемся на событие нажатия кнопки
              mainButton.onClick.AddListener(ButtonClick);
         }
-        UpdateButtonState();
+        
     }
    
+    public IEnumerator UpdateButtState()
+    {
+        yield return new WaitForEndOfFrame();
+
+        UpdateButtonState();
+    }
     public void UpdateButtonState()
     {
 
@@ -42,7 +49,7 @@ public class UpgradeBar : MonoBehaviour
             other3Button.interactable = true;
 
         }
-        else
+        else if(!buffUpgradeButton.isUpgraded)
         {
             mainButton.interactable = false;
             other1Button.interactable = false;
