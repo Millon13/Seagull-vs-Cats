@@ -42,7 +42,16 @@ public class GameManager : MonoBehaviour
    
     private void Awake()
     {
-        Instance = this;
+        // Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         healthContainer = new Dictionary<GameObject, Health>();
         coinContainer = new Dictionary<GameObject, Coin>();
         buffRecieverContainer = new Dictionary<GameObject, BuffReciever>();

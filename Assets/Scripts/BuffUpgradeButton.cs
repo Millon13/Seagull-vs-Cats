@@ -24,6 +24,11 @@ public class BuffUpgradeButton : MonoBehaviour
         inventory = GameManager.Instance.inventory;
         StartCoroutine(CoinsXCheck());
         buffReciever = GetComponent<BuffReciever>();
+        buffReciever = GetComponent<BuffReciever>();
+        if (buffReciever == null)
+        {
+            Debug.LogError("BuffReciever is not attached to the GameObject.");
+        }
         if (inventory != null)
          {
             
@@ -99,6 +104,7 @@ public class BuffUpgradeButton : MonoBehaviour
             Debug.LogError("buffReciever.Buffs is null.");
             return;
         }
+        
         data.upgradeAmountList = new List<UpgrateList>();
         foreach (var buff in buffReciever.Buffs)
         {
@@ -107,6 +113,11 @@ public class BuffUpgradeButton : MonoBehaviour
     }
     public void Load(UpdateSaveData data)
     {
+        if (data.upgradeAmountList == null || data.upgradeAmountList.Count == 0)
+        {
+            Debug.LogError("No upgrade data to load.");
+            return;
+        }
         foreach (var upgrade in data.upgradeAmountList)
         {
             var buff = buffReciever.Buffs.Find(b => b.type == upgrade.buffType);
