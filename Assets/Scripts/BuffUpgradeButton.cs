@@ -10,7 +10,7 @@ public class BuffUpgradeButton : MonoBehaviour
 {
 
     public Inventory inventory; // —Ò˚ÎÍ‡ Ì‡ Ó·˙ÂÍÚ Inventory
-    public BuffType buffType;
+    [SerializeField] private BuffType buffType;
     public BuffReciever buffReciever;
     public int upgradeAmount;
     private int upgradeCount;
@@ -23,12 +23,7 @@ public class BuffUpgradeButton : MonoBehaviour
         GameManager.Instance.upgrade = this;
         inventory = GameManager.Instance.inventory;
         StartCoroutine(CoinsXCheck());
-        buffReciever = GetComponent<BuffReciever>();
-        buffReciever = GetComponent<BuffReciever>();
-        if (buffReciever == null)
-        {
-            Debug.LogError("BuffReciever is not attached to the GameObject.");
-        }
+       
         if (inventory != null)
          {
             
@@ -41,12 +36,18 @@ public class BuffUpgradeButton : MonoBehaviour
          ChargeMoney(); 
          UpgradeBuff(buffType, upgradeAmount);
          upgradeBar.UpdateButtonState();
+         
     }
     public IEnumerator CoinsXCheck()
     {
         yield return new WaitForEndOfFrame();
 
         —oinsCheck();
+        buffReciever = GetComponent<BuffReciever>();
+        if (buffReciever == null)
+        {
+            Debug.LogError("BuffReciever is not attached to the GameObject.");
+        }
     }
     public void —oinsCheck()
     {
@@ -60,7 +61,8 @@ public class BuffUpgradeButton : MonoBehaviour
     public void UpgradeBuff(BuffType buffType, int upgradeAmount)
     {
         if (SceneManager.GetActiveScene().name == "UpdateShop")
-        {
+        { 
+            CoinsXCheck();
             
             
             if (isUpgraded)

@@ -16,7 +16,12 @@ public class BuffReciever : MonoBehaviour
         GameManager.Instance.buffRecieverContainer.Add(gameObject, this);
         buffs = new List<Buff>();
     }
-   
+   /* public IEnumerator StartBuff()
+    {
+        yield return new WaitForEndOfFrame();
+    }*/
+
+
     public void AddBuff(Buff buff)
     {
         if (!buffs.Contains(buff))

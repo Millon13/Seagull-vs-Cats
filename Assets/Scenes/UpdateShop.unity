@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 233748986}
   - component: {fileID: 233748985}
   - component: {fileID: 233748988}
+  - component: {fileID: 233748989}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -545,6 +546,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &233748989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233748983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  buffType: 2
+  buffReciever: {fileID: 0}
+  upgradeAmount: 0
+  isUpgraded: 0
+  upgradeBar: {fileID: 0}
 --- !u!1 &235842038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1527,7 @@ GameObject:
   - component: {fileID: 801632132}
   - component: {fileID: 801632131}
   - component: {fileID: 801632133}
+  - component: {fileID: 801632134}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -1641,6 +1661,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &801632134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801632129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  buffType: 3
+  buffReciever: {fileID: 0}
+  upgradeAmount: 0
+  isUpgraded: 0
+  upgradeBar: {fileID: 0}
 --- !u!1 &831365280
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,6 +3716,7 @@ GameObject:
   - component: {fileID: 2006554242}
   - component: {fileID: 2006554241}
   - component: {fileID: 2006554244}
+  - component: {fileID: 2006554245}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -3811,6 +3850,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2006554245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006554239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  buffType: 2
+  buffReciever: {fileID: 0}
+  upgradeAmount: 0
+  isUpgraded: 0
+  upgradeBar: {fileID: 0}
 --- !u!1 &2015906944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4004,6 +4061,7 @@ GameObject:
   - component: {fileID: 2116534709}
   - component: {fileID: 2116534708}
   - component: {fileID: 2116534710}
+  - component: {fileID: 2116534711}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -4137,6 +4195,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2116534711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116534706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  buffType: 4
+  buffReciever: {fileID: 0}
+  upgradeAmount: 0
+  isUpgraded: 0
+  upgradeBar: {fileID: 0}
 --- !u!1 &2140418871
 GameObject:
   m_ObjectHideFlags: 0
