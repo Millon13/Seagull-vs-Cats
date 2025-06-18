@@ -16,6 +16,7 @@ public class BuffReciever : MonoBehaviour
         GameManager.Instance.buffRecieverContainer.Add(gameObject, this);
         buffs = new List<Buff>();
     }
+   
     public void AddBuff(Buff buff)
     {
         if (!buffs.Contains(buff))

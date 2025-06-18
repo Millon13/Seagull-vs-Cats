@@ -12,8 +12,8 @@ public class BuffUpgradeButton : MonoBehaviour
     public Inventory inventory; // Ссылка на объект Inventory
     public BuffType buffType;
     public BuffReciever buffReciever;
-    public float upgradeAmount;
-   // public List<UpgradeCount> upgradeCount;
+    public int upgradeAmount;
+    private int upgradeCount;
    // public List<Buffs> buffShop;
    // public int initialCoinsCount;
     public bool isUpgraded;
@@ -21,36 +21,16 @@ public class BuffUpgradeButton : MonoBehaviour
 
     public void Start()
     {
-
-         if (inventory != null)
+        GameManager.Instance.upgrade = this;
+        StartCoroutine(CoinsXCheck());
+        buffReciever = GetComponent<BuffReciever>();
+        if (inventory != null)
          {
             //initialCoinsCount = inventory.coinsCount;
          }
-        /* buffShop = new List<Buffs>
-         {
-            new Buff(BuffType.Speed, 10),
-            new Buff(BuffType.Force, 5),
-            new Buff(BuffType.Health, 20),
-            new Buff(BuffType.Damage, 15)
-         }*/
-    }
-    /*public void AddBuff(BuffType buffType, int amount)
-    {
-        buffs.Add(new Buff(buffType, amount));
-    }
 
-    public void UpdateBuffAmount(BuffType buffType, int newAmount)
-    {
-        foreach (var buff in buffs)
-        {
-            if (buff.buffType == buffType)
-            {
-                buff.amount = newAmount;
-                break;
-            }
-        }
-    }*/
-
+    }
+  
     public void OnUpgradeButtonClicked()
     {
 
@@ -59,29 +39,42 @@ public class BuffUpgradeButton : MonoBehaviour
          UpgradeBuff(buffType, upgradeAmount);
          upgradeBar.UpdateButtonState();
     }
+    public IEnumerator CoinsXCheck()
+    {
+        yield return new WaitForEndOfFrame();
 
-    public void UpgradeBuff(BuffType buffType, float upgradeAmount)
+        coinsCheck();
+    }
+    public void coinsCheck()
+    {
+        if (inventory.coinsCount >= 10) // Используем coinsCount из inventory
+        {
+            isUpgraded = true;
+        }
+        else if (inventory.coinsCount < 10)
+            isUpgraded = false;
+    }
+    public void UpgradeBuff(BuffType buffType, int upgradeAmount)
     {
         if (SceneManager.GetActiveScene().name == "UpdateShop")
         {
             
-            if (inventory.coinsCount >= 10) // Используем coinsCount из inventory
+            
+            if (isUpgraded)
             {
-                isUpgraded = true;
-
-               // var buff = buffReciever.Buffs.Find(b => b.type == buffType);
-                //if (buff != null)
+                var buff = buffReciever.Buffs.Find(b => b.type == buffType);
+                if (buff != null)
                 {
-                    //upgradeCount += upgradeAmount;
-                    //buff.additiveBonus = upgradeCount;
+                    upgradeCount += upgradeAmount;
+                    buff.shopAmount += 5;
                     upgradeBar.ApplyBuff();
                 }
-            } 
-            else
-            {
-                isUpgraded = false;
-                Debug.Log("Not enough coins to upgrade.");
             }
+            
+            
+            if (!isUpgraded)
+                Debug.Log("Not enough coins to upgrade.");
+            
         }
     }
     public void ChargeMoney()
@@ -96,16 +89,53 @@ public class BuffUpgradeButton : MonoBehaviour
     #region Save and Load
     public void Save(ref UpdateSaveData data)
     {
-        //data.upgradeAmountList = upgradeCount;
+        if (buffReciever == null)
+        {
+            Debug.LogError("buffReciever is null.");
+            return;
+        }
+
+        if (buffReciever.Buffs == null)
+        {
+            Debug.LogError("buffReciever.Buffs is null.");
+            return;
+        }
+        data.upgradeAmountList = new List<UpgrateList>();
+        foreach (var buff in buffReciever.Buffs)
+        {
+            data.upgradeAmountList.Add(new UpgrateList(buff.type, buff.shopAmount));
+        }
     }
     public void Load(UpdateSaveData data)
     {
-        //upgradeCount = Convert.ToInt32(data.upgradeAmountList);
+        foreach (var upgrade in data.upgradeAmountList)
+        {
+            var buff = buffReciever.Buffs.Find(b => b.type == upgrade.buffType);
+            if (buff != null)
+            {
+                buff.shopAmount = upgrade.shopAmount; // Восстанавливаем shopAmount из сохраненных данных
+            }
+        }
     }
     #endregion
 }
 [System.Serializable]
+
+public struct UpgrateList
+{
+    public BuffType buffType;
+    public float shopAmount;
+
+    public UpgrateList(BuffType buffType, float shopAmount)
+    {
+        this.buffType = buffType;
+        this.shopAmount = shopAmount;
+    }
+}
+
+[System.Serializable]
+
 public struct UpdateSaveData
 {
-   // public List<UpgrateList> upgradeAmountList;
+   public List<UpgrateList> upgradeAmountList;
 }
