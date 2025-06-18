@@ -533,6 +533,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2097254443}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &235842038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1036,6 @@ MonoBehaviour:
   buffType: 2
   buffReciever: {fileID: 385705104}
   upgradeAmount: 5
-  upgradeCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 385705106}
 --- !u!114 &385705106
@@ -1261,7 +1272,6 @@ MonoBehaviour:
   buffType: 3
   buffReciever: {fileID: 618858355}
   upgradeAmount: 5
-  upgradeCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 618858359}
 --- !u!114 &618858357
@@ -1619,6 +1629,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2097254443}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &831365280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,7 +1904,6 @@ MonoBehaviour:
   buffType: 4
   buffReciever: {fileID: 898768143}
   upgradeAmount: 5
-  upgradeCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 898768147}
 --- !u!114 &898768145
@@ -3778,6 +3799,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2097254443}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2015906944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,7 +3922,6 @@ MonoBehaviour:
   buffType: 1
   buffReciever: {fileID: 2047238019}
   upgradeAmount: 5
-  upgradeCount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 2047238023}
 --- !u!114 &2047238021
@@ -3949,6 +3981,17 @@ MonoBehaviour:
   other3Button: {fileID: 2116534710}
   deltaProgress: 0.1428
   buffUpgradeButton: {fileID: 2047238020}
+--- !u!114 &2097254443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 184095620809367911, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
+  m_PrefabInstance: {fileID: 931570686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec696d814f04163449fa3add57f388e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2116534706
 GameObject:
   m_ObjectHideFlags: 0
@@ -4073,6 +4116,18 @@ MonoBehaviour:
       - m_Target: {fileID: 898768144}
         m_TargetAssemblyTypeName: BuffUpgradeButton, Assembly-CSharp
         m_MethodName: OnUpgradeButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2097254443}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EndLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

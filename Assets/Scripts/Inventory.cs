@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
     public void Start()
     {
         GameManager.Instance.inventory = this;
+
         //coinsCount = player.totalLevelCoins;
         coinsText.text = ": " + coinsCount.ToString(); // Инициализируем текст с текущим количеством монет
         items = new List<Item>();

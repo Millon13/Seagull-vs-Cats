@@ -14,28 +14,26 @@ public class BuffUpgradeButton : MonoBehaviour
     public BuffReciever buffReciever;
     public int upgradeAmount;
     private int upgradeCount;
-   // public List<Buffs> buffShop;
-   // public int initialCoinsCount;
+   
     public bool isUpgraded;
     [SerializeField] private UpgradeBar upgradeBar;
 
     public void Start()
     {
         GameManager.Instance.upgrade = this;
+        inventory = GameManager.Instance.inventory;
         StartCoroutine(CoinsXCheck());
         buffReciever = GetComponent<BuffReciever>();
         if (inventory != null)
          {
-            //initialCoinsCount = inventory.coinsCount;
+            
          }
 
     }
   
     public void OnUpgradeButtonClicked()
     {
-
-         ChargeMoney();
-         
+         ChargeMoney(); 
          UpgradeBuff(buffType, upgradeAmount);
          upgradeBar.UpdateButtonState();
     }
@@ -43,9 +41,9 @@ public class BuffUpgradeButton : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        coinsCheck();
+        ÑoinsCheck();
     }
-    public void coinsCheck()
+    public void ÑoinsCheck()
     {
         if (inventory.coinsCount >= 10) // Èñïîëüçóåì coinsCount èç inventory
         {
@@ -68,6 +66,7 @@ public class BuffUpgradeButton : MonoBehaviour
                     upgradeCount += upgradeAmount;
                     buff.shopAmount += 5;
                     upgradeBar.ApplyBuff();
+                    
                 }
             }
             

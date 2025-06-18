@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     //public Dictionary<GameObject, Fish> fishContainer;
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public BuffUpgradeButton upgrade;
+    [HideInInspector] public UpgradeBar bar;
     
 
     public ItemBase itemDataBase;

@@ -17,20 +17,19 @@ public class UpgradeBar : MonoBehaviour
     [SerializeField] private BuffUpgradeButton buffUpgradeButton;
     void Start()
     {
+        GameManager.Instance.bar = this;
         StartCoroutine(UpdateButtState());
         if (updateBar == null)
         {
             Debug.LogError("UpdateBar Image is not assigned!");
         }
-        
-       
         if (mainButton != null)
         {
                // Подписываемся на событие нажатия кнопки
              mainButton.onClick.AddListener(ButtonClick);
         }
-        
     }
+
    
     public IEnumerator UpdateButtState()
     {
@@ -96,6 +95,20 @@ public class UpgradeBar : MonoBehaviour
         ApplyBuff();
     }
 
-
+    #region Save and Load
+    public void Save(ref UpgradeBarSaveData data)
+    {
+        data.amount = targetProgress;
+    }
+    public void Load(UpgradeBarSaveData data)
+    {
+        targetProgress = data.amount;
+    }
+    #endregion
 }
 
+[System.Serializable]
+public struct UpgradeBarSaveData
+{
+    public float amount;
+}

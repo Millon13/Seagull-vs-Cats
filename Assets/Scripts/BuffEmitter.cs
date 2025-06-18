@@ -30,11 +30,7 @@ public class Buff
     public float additiveBonus;
     public float multipleBonus;
     public float shopAmount;
-    /*public BuffShopAmount(BuffType type, float shopAmount)
-    {
-        this.type = type;
-        this.shopAmount = shopAmount;
-    }*/
+    
 }
 public enum BuffType : byte
 {
