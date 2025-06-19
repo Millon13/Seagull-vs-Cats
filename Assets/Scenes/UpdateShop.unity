@@ -413,6 +413,8 @@ GameObject:
   - component: {fileID: 233748985}
   - component: {fileID: 233748988}
   - component: {fileID: 233748989}
+  - component: {fileID: 233748991}
+  - component: {fileID: 233748990}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -433,7 +435,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 832560647}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -558,12 +560,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 233748991}
   buffType: 2
-  buffReciever: {fileID: 0}
+  buffReciever: {fileID: 233748990}
   upgradeAmount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 0}
+--- !u!114 &233748990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233748983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &233748991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233748983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2377bbb7ed5daa49944658f48cfa50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsCount: 0
+  coinsText: {fileID: 921666671}
+  buffReciever: {fileID: 233748990}
 --- !u!1 &235842038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1557,8 @@ GameObject:
   - component: {fileID: 801632131}
   - component: {fileID: 801632133}
   - component: {fileID: 801632134}
+  - component: {fileID: 801632136}
+  - component: {fileID: 801632135}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -1673,12 +1704,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 801632136}
   buffType: 3
-  buffReciever: {fileID: 0}
+  buffReciever: {fileID: 801632135}
   upgradeAmount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 0}
+--- !u!114 &801632135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801632129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &801632136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801632129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2377bbb7ed5daa49944658f48cfa50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsCount: 0
+  coinsText: {fileID: 921666671}
+  buffReciever: {fileID: 801632135}
 --- !u!1 &831365280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,10 +1842,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1133207505}
+  - {fileID: 233748984}
   - {fileID: 924368857}
   - {fileID: 1009591948}
   - {fileID: 1305607622}
-  - {fileID: 233748984}
   m_Father: {fileID: 767038673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2043,7 +2101,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 832560647}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2332,7 +2390,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 832560647}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3001,7 +3059,7 @@ RectTransform:
   m_Children:
   - {fileID: 267556872}
   m_Father: {fileID: 832560647}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3717,6 +3775,8 @@ GameObject:
   - component: {fileID: 2006554241}
   - component: {fileID: 2006554244}
   - component: {fileID: 2006554245}
+  - component: {fileID: 2006554247}
+  - component: {fileID: 2006554246}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -3862,12 +3922,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 2006554246}
   buffType: 2
-  buffReciever: {fileID: 0}
+  buffReciever: {fileID: 2006554247}
   upgradeAmount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 0}
+--- !u!114 &2006554246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006554239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2377bbb7ed5daa49944658f48cfa50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsCount: 0
+  coinsText: {fileID: 921666671}
+  buffReciever: {fileID: 2006554247}
+--- !u!114 &2006554247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006554239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2015906944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4062,6 +4149,8 @@ GameObject:
   - component: {fileID: 2116534708}
   - component: {fileID: 2116534710}
   - component: {fileID: 2116534711}
+  - component: {fileID: 2116534713}
+  - component: {fileID: 2116534712}
   m_Layer: 0
   m_Name: Add
   m_TagString: Untagged
@@ -4207,12 +4296,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 2116534712}
   buffType: 4
-  buffReciever: {fileID: 0}
+  buffReciever: {fileID: 2116534713}
   upgradeAmount: 0
   isUpgraded: 0
   upgradeBar: {fileID: 0}
+--- !u!114 &2116534712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116534706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2377bbb7ed5daa49944658f48cfa50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsCount: 0
+  coinsText: {fileID: 921666671}
+  buffReciever: {fileID: 2116534713}
+--- !u!114 &2116534713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116534706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2140418871
 GameObject:
   m_ObjectHideFlags: 0

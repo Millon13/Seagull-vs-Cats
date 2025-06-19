@@ -37,20 +37,12 @@ public class Inventory : MonoBehaviour
             if (!coin.IsCollected)
             {
                 coinsCount++;
-                
-
-                
-
                 UpdateCoinsText();
-
                 coin.IsCollected = true;
                 coin.StartDestroy(); 
-
             }
 
             // Debug.Log("кол-во монет: " + coinsCount);
-
-
         }
         coinsCount += GameManager.Instance.extraLevelCoins;
         if (GameManager.Instance.itemsContainer.ContainsKey(col.gameObject))
@@ -58,8 +50,6 @@ public class Inventory : MonoBehaviour
             var itemsComponent = GameManager.Instance.itemsContainer[col.gameObject];
             items.Add(itemsComponent.Item);
             itemsComponent.Destroy(col.gameObject);
-
-
         }
     }
     public void UpdateCoinsText()
