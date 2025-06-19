@@ -400,6 +400,7 @@
 "Assets/Scripts/BuffEmitter.cs"
 "Assets/Scripts/BuffReciever.cs"
 "Assets/Scripts/BuffUpgradeButton.cs"
+"Assets/Scripts/ButtonUpgrade.cs"
 "Assets/Scripts/Cell.cs"
 "Assets/Scripts/Coin.cs"
 "Assets/Scripts/CollisionDamage.cs"

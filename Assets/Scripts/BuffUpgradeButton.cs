@@ -24,6 +24,11 @@ public class BuffUpgradeButton : MonoBehaviour
         {
           //inventory = GameManager.Instance.inventory;
         }
+        buffReciever = GetComponent<BuffReciever>();
+        if (buffReciever == null)
+        {
+            Debug.LogError("BuffReciever is not attached to the GameObject.");
+        }
         
         StartCoroutine(CoinsXCheck());
     }
@@ -38,13 +43,7 @@ public class BuffUpgradeButton : MonoBehaviour
     public IEnumerator CoinsXCheck()
     {
         yield return new WaitForEndOfFrame();
-
         ÑoinsCheck();
-        buffReciever = GetComponent<BuffReciever>();
-        if (buffReciever == null)
-        {
-            Debug.LogError("BuffReciever is not attached to the GameObject.");
-        }
     }
     public void ÑoinsCheck()
     {
@@ -60,17 +59,21 @@ public class BuffUpgradeButton : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "UpdateShop")
         {
             ÑoinsCheck();
-            
-            
             if (isUpgraded)
             {
+                Debug.Log("True");
                 var buff = buffReciever.Buffs.Find(b => b.type == buffType);
                 if (buff != null)
                 {
-                    upgradeCount += upgradeAmount;
+                    //upgradeCount += upgradeAmount;
+                    //buff.shopAmount = upgrade.shopAmount;
                     buff.shopAmount += 5;
                     upgradeBar.ApplyBuff();
-                    
+                    Debug.Log("shopAmount"+buff.shopAmount);
+                }
+                else if (buff == null)
+                {
+                    Debug.Log("buff == null");
                 }
             }
             if (!isUpgraded)
@@ -117,6 +120,10 @@ public class BuffUpgradeButton : MonoBehaviour
             if (buff != null)
             {
                 buff.shopAmount = upgrade.shopAmount; 
+            }
+            else
+            {
+                Debug.Log("Buff with type " + upgrade.buffType + " not found during load.");
             }
         }
     }

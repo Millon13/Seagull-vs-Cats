@@ -7,15 +7,22 @@ public class BuffReciever : MonoBehaviour
 {
     private List<Buff> buffs;
     public Action OnBuffChanged;
+
     public List<Buff> Buffs
     {
-        get { return buffs; }
+        get {
+            /*if (buffs == null)
+            {
+                buffs = new List<Buff>(); // Инициализация при первом доступе
+            }*/
+            return buffs; }
     }
     void Start()
     {
         GameManager.Instance.buffRecieverContainer.Add(gameObject, this);
         buffs = new List<Buff>();
-    }
+        
+}
    /* public IEnumerator StartBuff()
     {
         yield return new WaitForEndOfFrame();
