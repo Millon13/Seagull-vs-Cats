@@ -30,7 +30,7 @@ public class Buff
     public float additiveBonus;
     public float multipleBonus;
     public float shopAmount;
-    public override bool Equals(object obj)
+    /*public override bool Equals(object obj)
     {
         if (obj is Buff other)
         {
@@ -42,7 +42,7 @@ public class Buff
     public override int GetHashCode()
     {
         return (int)type ^ shopAmount.GetHashCode();
-    }
+    }*/
 
 }
 public enum BuffType : byte

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonUpgrade : MonoBehaviour
 {
-    [SerializeField] private BuffType buffType;
-    
+    [SerializeField] public BuffType buffType;
+    //[SerializeField] public BuffReciever buffReciever;
+    //[SerializeField] public ItemType type;
 }

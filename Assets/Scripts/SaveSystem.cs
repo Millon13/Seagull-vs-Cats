@@ -15,6 +15,7 @@ public class SaveSystem
         //public PlayerSaveData PlayerData;
         public InventorySaveData InventoryData;
         public UpdateSaveData UpdateData;
+        //internal List<UpgrateList> upgradeAmountList;
         //public UpgradeBarSaveData UpgradeBarData;
     }
     public static string SaveFileName()
@@ -60,6 +61,7 @@ public class SaveSystem
         }
         string saveContent = File.ReadAllText(SaveFileName());
         saveData = JsonUtility.FromJson<SaveData>(saveContent);
+        //saveData.upgradeAmountList = new List<UpgrateList>();
         HandleLoadData();//тут нуль референс
     }
     private static void HandleLoadData()
@@ -67,6 +69,6 @@ public class SaveSystem
         //GameManager.Instance.Player.Load(saveData.PlayerData);//тут нуль референс
         GameManager.Instance.inventory.Load(saveData.InventoryData);
         GameManager.Instance.upgrade.Load(saveData.UpdateData);
-        //GameManager.Instance.bar.Load(saveData.UpgradeBarData);
+       
     }
 }

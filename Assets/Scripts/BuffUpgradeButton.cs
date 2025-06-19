@@ -7,37 +7,43 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public class BuffUpgradeButton : MonoBehaviour
-{ 
+{
+    [SerializeField] public ButtonUpgrade buttonUpgrade;
     public Inventory inventory; // —Ò˚ÎÍ‡ Ì‡ Ó·˙ÂÍÚ Inventory
-    [SerializeField] private BuffType buffType;
-    public BuffReciever buffReciever;
+    private BuffType currentbuffType;
+    [SerializeField] public BuffReciever currentbuffReciever;
     public int upgradeAmount;
     private int upgradeCount;
-   
     public bool isUpgraded;
+    public bool oneInizialize=true;
     [SerializeField] private UpgradeBar upgradeBar;
 
     public void Start()
     {
+       
+        
         GameManager.Instance.upgrade = this;
+        //BuffType currentbuffType = buttonUpgrade.buffType;
+        //currentbuffReciever = buttonUpgrade.buffReciever;
         if (inventory != null)
         {
           //inventory = GameManager.Instance.inventory;
         }
-        buffReciever = GetComponent<BuffReciever>();
-        if (buffReciever == null)
+        //buffReciever = GetComponent<BuffReciever>();
+        if (currentbuffReciever == null)
         {
             Debug.LogError("BuffReciever is not attached to the GameObject.");
         }
-        
+        //StartCoroutine(Initialization());
         StartCoroutine(CoinsXCheck());
     }
   
     public void OnUpgradeButtonClicked()
     {
-         ChargeMoney(); 
-         UpgradeBuff(buffType, upgradeAmount);
-         upgradeBar.UpdateButtonState();
+        
+        ChargeMoney(); 
+        UpgradeBuff(currentbuffType,upgradeAmount);
+        upgradeBar.UpdateButtonState();
          
     }
     public IEnumerator CoinsXCheck()
@@ -54,15 +60,62 @@ public class BuffUpgradeButton : MonoBehaviour
         else if (inventory.coinsCount < 10)
             isUpgraded = false;
     }
-    public void UpgradeBuff(BuffType buffType, int upgradeAmount)
+    public IEnumerator Initialization()
     {
+
+        yield return new WaitForEndOfFrame();
+        /*if (oneInizialize)
+        {
+            currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Damage, shopAmount = 0 });
+            currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Force, shopAmount = 0 });
+            currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Speed, shopAmount = 0 });
+            currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Health, shopAmount = 0 });
+            oneInizialize = false;
+        }*/
+    }
+    public void UpgradeBuff(BuffType currentbuffType, int upgradeAmount)
+    {
+        //StartCoroutine(Initialization());
+        currentbuffType = buttonUpgrade.buffType;
+      
+        Debug.Log("currentbuffType:" + currentbuffType);
         if (SceneManager.GetActiveScene().name == "UpdateShop")
         {
-            —oinsCheck();
+            
             if (isUpgraded)
             {
                 Debug.Log("True");
-                var buff = buffReciever.Buffs.Find(b => b.type == buffType);
+                
+                if (currentbuffReciever == null )
+                {
+                    Debug.LogError("BuffReciever  is null.");
+                    return;
+                }
+                if ( currentbuffReciever.Buffs == null)
+                {
+                    Debug.LogError(" Buffs is null.");
+                    return;
+                }
+
+                Debug.Log($"Number of Buffs: {currentbuffReciever.Buffs.Count}");
+
+                /*for (int i = 0; i < currentbuffReciever.Buffs.Count; i++)
+                {
+                    Buff currentbuff = currentbuffReciever.Buffs[i];
+                    Debug.Log($"Buff type: {currentbuff.type}");
+                }*/
+                
+                foreach (var cbuff in currentbuffReciever.Buffs)
+                {
+                    Debug.Log($"Available Buff type: {cbuff.type}");
+                } 
+                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Force, shopAmount = 0 });
+                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Damage, shopAmount = 0 });
+                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Speed, shopAmount = 0 });
+                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Health, shopAmount = 0 });
+
+                var buff = currentbuffReciever.Buffs.Find(b => b.type == currentbuffType);//buff=null
+
                 if (buff != null)
                 {
                     //upgradeCount += upgradeAmount;
@@ -78,6 +131,7 @@ public class BuffUpgradeButton : MonoBehaviour
             }
             if (!isUpgraded)
                 Debug.Log("Not enough coins to upgrade.");
+            —oinsCheck();
         }
     }
     public void ChargeMoney()
@@ -91,18 +145,18 @@ public class BuffUpgradeButton : MonoBehaviour
     #region Save and Load
     public void Save(ref UpdateSaveData data)
     {
-        if (buffReciever == null)
+        if (currentbuffReciever == null)
         {
             Debug.LogError("buffReciever is null.");
             return;
         }
-        if (buffReciever.Buffs == null)
+        if (currentbuffReciever.Buffs == null)
         {
             Debug.LogError("buffReciever.Buffs is null.");
             return;
         }
         data.upgradeAmountList = new List<UpgrateList>();
-        foreach (var buff in buffReciever.Buffs)
+        foreach (var buff in currentbuffReciever.Buffs)
         {
             data.upgradeAmountList.Add(new UpgrateList(buff.type, buff.shopAmount));
         }
@@ -116,7 +170,7 @@ public class BuffUpgradeButton : MonoBehaviour
         }
         foreach (var upgrade in data.upgradeAmountList)
         {
-            var buff = buffReciever.Buffs.Find(b => b.type == upgrade.buffType);
+            var buff = currentbuffReciever.Buffs.Find(b => b.type == upgrade.buffType);
             if (buff != null)
             {
                 buff.shopAmount = upgrade.shopAmount; 
@@ -129,6 +183,7 @@ public class BuffUpgradeButton : MonoBehaviour
     }
     #endregion
 }
+
 [System.Serializable]
 
 public struct UpgrateList

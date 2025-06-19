@@ -25,8 +25,6 @@ public class Health : MonoBehaviour
 
     }
 
-
-
     public void TakeHit(int damage, GameObject attacker)
     {
         

@@ -954,7 +954,6 @@ GameObject:
   - component: {fileID: 385705103}
   - component: {fileID: 385705102}
   - component: {fileID: 385705105}
-  - component: {fileID: 385705104}
   - component: {fileID: 385705106}
   m_Layer: 0
   m_Name: upgrade
@@ -1022,18 +1021,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385705100}
   m_CullTransparentMesh: 1
---- !u!114 &385705104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385705100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &385705105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,9 +1033,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 233748989}
   inventory: {fileID: 38849477}
-  buffType: 2
-  buffReciever: {fileID: 385705104}
+  currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
   upgradeBar: {fileID: 385705106}
@@ -1228,7 +1215,6 @@ GameObject:
   - component: {fileID: 618858358}
   - component: {fileID: 618858357}
   - component: {fileID: 618858356}
-  - component: {fileID: 618858355}
   - component: {fileID: 618858359}
   m_Layer: 0
   m_Name: upgrade (1)
@@ -1258,18 +1244,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.799984, y: -1.4666138}
   m_SizeDelta: {x: 520, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &618858355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618858353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &618858356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,9 +1256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 801632134}
   inventory: {fileID: 38849477}
-  buffType: 3
-  buffReciever: {fileID: 618858355}
+  currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
   upgradeBar: {fileID: 618858359}
@@ -1370,7 +1344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706452379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -915.4896, y: -471.0208, z: 0}
+  m_LocalPosition: {x: -911.11, y: -471.0208, z: 0}
   m_LocalScale: {x: 0.27683753, y: 0.5716506, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1874,7 +1848,6 @@ GameObject:
   - component: {fileID: 898768146}
   - component: {fileID: 898768145}
   - component: {fileID: 898768144}
-  - component: {fileID: 898768143}
   - component: {fileID: 898768147}
   m_Layer: 0
   m_Name: upgrade (2)
@@ -1904,18 +1877,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.7999026, y: -2.1}
   m_SizeDelta: {x: 520, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &898768143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898768141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &898768144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,9 +1889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 2116534711}
   inventory: {fileID: 38849477}
-  buffType: 4
-  buffReciever: {fileID: 898768143}
+  currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
   upgradeBar: {fileID: 898768147}
@@ -2918,7 +2879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.7999878, y: 0}
+  m_AnchoredPosition: {x: -1.8000488, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1229387973
@@ -3906,7 +3867,6 @@ GameObject:
   - component: {fileID: 2047238022}
   - component: {fileID: 2047238021}
   - component: {fileID: 2047238020}
-  - component: {fileID: 2047238019}
   - component: {fileID: 2047238023}
   m_Layer: 0
   m_Name: upgrade (1)
@@ -3936,18 +3896,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.0000005, y: -1}
   m_SizeDelta: {x: 520, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2047238019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047238017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60b0d68af446ae4c87e01d807eb02f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2047238020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3960,9 +3908,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ad3f79fe182780439f21eb03797f2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 2006554245}
   inventory: {fileID: 38849477}
-  buffType: 1
-  buffReciever: {fileID: 2047238019}
+  currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
   upgradeBar: {fileID: 2047238023}
