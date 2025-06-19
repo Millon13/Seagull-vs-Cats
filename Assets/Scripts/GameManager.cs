@@ -64,27 +64,6 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "UpdateShop")
             BadEnding();
-
-        /*if (Input.GetKey(KeyCode.Z))
-        {
-            SaveProgress();
-        }
-        if (Input.GetKey(KeyCode.X))
-        {
-            LoadProgress();
-        }*/
-        /*isProgressLoaded = true;
-        if (isProgressLoaded )
-        {
-            LoadProgress();
-            isProgressLoaded = false;
-
-        }*/
-
-
-      
-
-        // GoodEnding();
     }
     public void UpgradeThisBuff(BuffType buffType)
     { 

@@ -95,7 +95,7 @@ public class UpgradeBar : MonoBehaviour
         ApplyBuff();
     }
 
-    #region Save and Load
+    /*#region Save and Load
     public void Save(ref UpgradeBarSaveData data)
     {
         data.amount = targetProgress;
@@ -104,11 +104,11 @@ public class UpgradeBar : MonoBehaviour
     {
         targetProgress = data.amount;
     }
-    #endregion
+    #endregion*/
 }
 
-[System.Serializable]
+/*[System.Serializable]
 public struct UpgradeBarSaveData
 {
     public float amount;
-}
+}*/

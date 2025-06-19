@@ -7,8 +7,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public class BuffUpgradeButton : MonoBehaviour
-{
-
+{ 
     public Inventory inventory; // Ссылка на объект Inventory
     [SerializeField] private BuffType buffType;
     public BuffReciever buffReciever;
@@ -21,14 +20,12 @@ public class BuffUpgradeButton : MonoBehaviour
     public void Start()
     {
         GameManager.Instance.upgrade = this;
-        inventory = GameManager.Instance.inventory;
-        StartCoroutine(CoinsXCheck());
-       
         if (inventory != null)
-         {
-            
-         }
-
+        {
+          //inventory = GameManager.Instance.inventory;
+        }
+        
+        StartCoroutine(CoinsXCheck());
     }
   
     public void OnUpgradeButtonClicked()
@@ -61,8 +58,8 @@ public class BuffUpgradeButton : MonoBehaviour
     public void UpgradeBuff(BuffType buffType, int upgradeAmount)
     {
         if (SceneManager.GetActiveScene().name == "UpdateShop")
-        { 
-            CoinsXCheck();
+        {
+            СoinsCheck();
             
             
             if (isUpgraded)
@@ -76,11 +73,8 @@ public class BuffUpgradeButton : MonoBehaviour
                     
                 }
             }
-            
-            
             if (!isUpgraded)
                 Debug.Log("Not enough coins to upgrade.");
-            
         }
     }
     public void ChargeMoney()
@@ -89,8 +83,7 @@ public class BuffUpgradeButton : MonoBehaviour
         {
             inventory.coinsCount -= 10;
             inventory.UpdateCoinsText();
-        }
-
+        } 
     }
     #region Save and Load
     public void Save(ref UpdateSaveData data)
@@ -100,13 +93,11 @@ public class BuffUpgradeButton : MonoBehaviour
             Debug.LogError("buffReciever is null.");
             return;
         }
-
         if (buffReciever.Buffs == null)
         {
             Debug.LogError("buffReciever.Buffs is null.");
             return;
         }
-        
         data.upgradeAmountList = new List<UpgrateList>();
         foreach (var buff in buffReciever.Buffs)
         {
@@ -125,7 +116,7 @@ public class BuffUpgradeButton : MonoBehaviour
             var buff = buffReciever.Buffs.Find(b => b.type == upgrade.buffType);
             if (buff != null)
             {
-                buff.shopAmount = upgrade.shopAmount; // Восстанавливаем shopAmount из сохраненных данных
+                buff.shopAmount = upgrade.shopAmount; 
             }
         }
     }
@@ -137,16 +128,13 @@ public struct UpgrateList
 {
     public BuffType buffType;
     public float shopAmount;
-
     public UpgrateList(BuffType buffType, float shopAmount)
     {
         this.buffType = buffType;
         this.shopAmount = shopAmount;
     }
 }
-
 [System.Serializable]
-
 public struct UpdateSaveData
 {
    public List<UpgrateList> upgradeAmountList;
