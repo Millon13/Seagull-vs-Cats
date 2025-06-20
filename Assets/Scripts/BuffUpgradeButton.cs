@@ -40,11 +40,14 @@ public class BuffUpgradeButton : MonoBehaviour
   
     public void OnUpgradeButtonClicked()
     {
-        
+        upgradeBar.isUpdating=true;
+
         ChargeMoney(); 
-        UpgradeBuff(currentbuffType,upgradeAmount);
         upgradeBar.UpdateButtonState();
-         
+        UpgradeBuff(currentbuffType,upgradeAmount);
+        
+        upgradeBar.isUpdating = false;
+
     }
     public IEnumerator CoinsXCheck()
     {
@@ -108,20 +111,23 @@ public class BuffUpgradeButton : MonoBehaviour
                 foreach (var cbuff in currentbuffReciever.Buffs)
                 {
                     Debug.Log($"Available Buff type: {cbuff.type}");
-                } 
-                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Force, shopAmount = 0 });
-                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Damage, shopAmount = 0 });
-                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Speed, shopAmount = 0 });
-                currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Health, shopAmount = 0 });
+                }
+                if (oneInizialize)
+                {
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Force, shopAmount = 0 });
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Damage, shopAmount = 0 });
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Speed, shopAmount = 0 });
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Health, shopAmount = 0 });
+                    oneInizialize = false;
+                }
+                
 
                 var buff = currentbuffReciever.Buffs.Find(b => b.type == currentbuffType);//buff=null
 
                 if (buff != null)
                 {
-                    //upgradeCount += upgradeAmount;
-                    //buff.shopAmount = upgrade.shopAmount;
+                    
                     buff.shopAmount += 5;
-                    upgradeBar.ApplyBuff();
                     Debug.Log("shopAmount"+buff.shopAmount);
                 }
                 else if (buff == null)

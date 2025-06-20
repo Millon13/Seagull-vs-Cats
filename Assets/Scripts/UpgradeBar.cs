@@ -15,18 +15,20 @@ public class UpgradeBar : MonoBehaviour
     private float targetProgress = 0f; // Целевой прогресс
     [SerializeField] private float deltaProgress = 0.1428f;
     [SerializeField] private BuffUpgradeButton buffUpgradeButton;
+    public bool isUpdating;
     void Start()
     {
         GameManager.Instance.bar = this;
         StartCoroutine(UpdateButtState());
+        //UpdateButtonState();
         if (updateBar == null)
         {
             Debug.LogError("UpdateBar Image is not assigned!");
         }
         if (mainButton != null)
         {
-               // Подписываемся на событие нажатия кнопки
-             mainButton.onClick.AddListener(ButtonClick);
+            // Подписываемся на событие нажатия кнопки
+            mainButton.onClick.AddListener(ButtonClick);
         }
     }
 
@@ -39,6 +41,7 @@ public class UpgradeBar : MonoBehaviour
     }
     public void UpdateButtonState()
     {
+       
 
         if (buffUpgradeButton.isUpgraded)
         {
@@ -57,45 +60,67 @@ public class UpgradeBar : MonoBehaviour
             
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    public IEnumerator UpdateThisBar()
     {
+        yield return new WaitForEndOfFrame();
 
-        if (currentProgress < targetProgress ) 
+        if(currentProgress < targetProgress)
         {
             currentProgress += deltaProgress; // Увеличиваем текущий прогресс
-            
+
             updateBar.fillAmount = Mathf.Clamp01(currentProgress); // Обновляем прогресс-бар
 
         }
-        else if(currentProgress >= targetProgress )
+        else if (currentProgress >= targetProgress)
         {
             currentProgress += 0; // Увеличиваем текущий прогресс
 
             updateBar.fillAmount = Mathf.Clamp01(currentProgress);
         }
-          
+       /* while (currentProgress < targetProgress)
+        {
+            currentProgress += deltaProgress; // Увеличиваем текущий прогресс
+            updateBar.fillAmount = Mathf.Clamp01(currentProgress); // Обновляем прогресс-бар
+            yield return null; // Ждем до следующего кадра
+        }
+
+        currentProgress = targetProgress; // Убедимся, что текущий прогресс не превышает целевой
+        updateBar.fillAmount = Mathf.Clamp01(currentProgress); // Обновляем прогресс-бар
+        Debug.Log("targetProgress" + targetProgress);*/
+        isUpdating = false;
+    }
+
+    // Update is called once per frame
+    /*void Update()
+    {
+
+        StartCoroutine(UpdateThisBar());
        
-    } 
+    } */
     
     public void ApplyBuff()
     {
         
         SetTargetProgress(targetProgress + deltaProgress);
+        isUpdating = true;
+        StartCoroutine(UpdateThisBar());
     }
 
     public void SetTargetProgress(float newTarget)
     {
         targetProgress = Mathf.Clamp01(newTarget); // Устанавливаем новый целевой прогресс и ограничиваем его от 0 до 1
-        
+        Debug.Log($"Target progress set to: {targetProgress}");
     }
     public void ButtonClick()
     {
-        ApplyBuff();
+        if (!isUpdating) // Проверяем, идет ли обновление
+        {
+            ApplyBuff();
+            Debug.Log("Button clicked!");
+        }
     }
 
-    /*#region Save and Load
+    #region Save and Load
     public void Save(ref UpgradeBarSaveData data)
     {
         data.amount = targetProgress;
@@ -107,8 +132,8 @@ public class UpgradeBar : MonoBehaviour
     #endregion*/
 }
 
-/*[System.Serializable]
+[System.Serializable]
 public struct UpgradeBarSaveData
 {
     public float amount;
-}*/
+}
