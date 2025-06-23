@@ -87,7 +87,7 @@ public class UpgradeBar : MonoBehaviour
         currentProgress = targetProgress; // Убедимся, что текущий прогресс не превышает целевой
         updateBar.fillAmount = Mathf.Clamp01(currentProgress); // Обновляем прогресс-бар
         Debug.Log("targetProgress" + targetProgress);*/
-        isUpdating = false;
+        //isUpdating = false;
     }
 
     // Update is called once per frame
@@ -102,7 +102,7 @@ public class UpgradeBar : MonoBehaviour
     {
         
         SetTargetProgress(targetProgress + deltaProgress);
-        isUpdating = true;
+        //isUpdating = true;
         StartCoroutine(UpdateThisBar());
     }
 

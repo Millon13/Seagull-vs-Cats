@@ -21,7 +21,7 @@ public class BuffUpgradeButton : MonoBehaviour
     public void Start()
     {
        
-        
+        StartCoroutine(CoinsXCheck());
         GameManager.Instance.upgrade = this;
         //BuffType currentbuffType = buttonUpgrade.buffType;
         //currentbuffReciever = buttonUpgrade.buffReciever;
@@ -35,7 +35,7 @@ public class BuffUpgradeButton : MonoBehaviour
             Debug.LogError("BuffReciever is not attached to the GameObject.");
         }
         //StartCoroutine(Initialization());
-        StartCoroutine(CoinsXCheck());
+        
     }
   
     public void OnUpgradeButtonClicked()
@@ -57,9 +57,8 @@ public class BuffUpgradeButton : MonoBehaviour
     public void ÑoinsCheck()
     {
         if (inventory.coinsCount >= 10) // Èñïîëüçóåì coinsCount èç inventory
-        {
             isUpgraded = true;
-        }
+        
         else if (inventory.coinsCount < 10)
             isUpgraded = false;
     }
@@ -88,7 +87,7 @@ public class BuffUpgradeButton : MonoBehaviour
             if (isUpgraded)
             {
                 Debug.Log("True");
-                
+                ÑoinsCheck();
                 if (currentbuffReciever == null )
                 {
                     Debug.LogError("BuffReciever  is null.");
@@ -112,14 +111,7 @@ public class BuffUpgradeButton : MonoBehaviour
                 {
                     Debug.Log($"Available Buff type: {cbuff.type}");
                 }
-                if (oneInizialize)
-                {
-                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Force, shopAmount = 0 });
-                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Damage, shopAmount = 0 });
-                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Speed, shopAmount = 0 });
-                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Health, shopAmount = 0 });
-                    oneInizialize = false;
-                }
+               
                 
 
                 var buff = currentbuffReciever.Buffs.Find(b => b.type == currentbuffType);//buff=null
@@ -127,17 +119,25 @@ public class BuffUpgradeButton : MonoBehaviour
                 if (buff != null)
                 {
                     
+
                     buff.shopAmount += 5;
                     Debug.Log("shopAmount"+buff.shopAmount);
                 }
                 else if (buff == null)
                 {
+                    
                     Debug.Log("buff == null");
                 }
             }
-            if (!isUpgraded)
-                Debug.Log("Not enough coins to upgrade.");
             ÑoinsCheck();
+            if (!isUpgraded)
+            {
+                upgradeBar.UpdateButtonState();
+                Debug.Log("Not enough coins to upgrade.");
+
+            }
+                
+            
         }
     }
     public void ChargeMoney()
@@ -162,6 +162,8 @@ public class BuffUpgradeButton : MonoBehaviour
             return;
         }
         data.upgradeAmountList = new List<UpgrateList>();
+        
+
         foreach (var buff in currentbuffReciever.Buffs)
         {
             data.upgradeAmountList.Add(new UpgrateList(buff.type, buff.shopAmount));
@@ -182,7 +184,17 @@ public class BuffUpgradeButton : MonoBehaviour
                 buff.shopAmount = upgrade.shopAmount; 
             }
             else
+
             {
+
+                if (oneInizialize)
+                {
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Damage, shopAmount = 0 });
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Force, shopAmount = 0 });
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Speed, shopAmount = 0 });
+                    currentbuffReciever.Buffs.Add(new Buff { type = BuffType.Health, shopAmount = 0 });
+                    oneInizialize = false;
+                }
                 Debug.Log("Buff with type " + upgrade.buffType + " not found during load.");
             }
         }
