@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class UpgradeBar : MonoBehaviour
  {    
@@ -16,6 +18,10 @@ public class UpgradeBar : MonoBehaviour
     [SerializeField] private float deltaProgress = 0.1428f;
     [SerializeField] private BuffUpgradeButton buffUpgradeButton;
     public bool isUpdating;
+    public bool firstInizialize;
+    private BuffType thisBuffType;
+    public int thisAmount;
+    [SerializeField] private BuffReciever buffReciever;
     void Start()
     {
         GameManager.Instance.bar = this;
@@ -97,7 +103,26 @@ public class UpgradeBar : MonoBehaviour
         StartCoroutine(UpdateThisBar());
        
     } */
-    
+    public void OnUpgradeBarClicked()
+    {
+        UpgradeBarBuff(thisBuffType, thisAmount);
+    }
+    public void UpgradeBarBuff(BuffType thisBuffType, int thisAmount)
+    {
+   
+        var buff = buffReciever.Buffs.Find(b => b.type == thisBuffType);//buff=null
+
+        if (buff != null)
+        {
+            buff.amount += deltaProgress;
+            Debug.Log("amount" + buff.amount);
+        }
+        else if (buff == null)
+        {
+            Debug.Log("buff == null");
+        }
+       
+    }
     public void ApplyBuff()
     {
         
@@ -123,17 +148,63 @@ public class UpgradeBar : MonoBehaviour
     #region Save and Load
     public void Save(ref UpgradeBarSaveData data)
     {
-        data.amount = targetProgress;
+        //data.amount = targetProgress;
+        data.amountBarList = new List<UpgrateBarList>();
+
+
+        foreach (var buff in buffReciever.Buffs)
+        {
+            data.amountBarList.Add(new UpgrateBarList(buff.type, buff.amount));
+        }
     }
     public void Load(UpgradeBarSaveData data)
     {
-        targetProgress = data.amount;
+        //targetProgress = data.amount;
+        if (data.amountBarList == null || data.amountBarList.Count == 0)
+        {
+            Debug.LogError("No upgrade data to load.");
+            return;
+        }
+        foreach (var upgrade in data.amountBarList)
+        {
+            var buff = buffReciever.Buffs.Find(b => b.type == upgrade.buffType);
+            if (buff != null)
+            {
+                buff.shopAmount = upgrade.amount;
+            }
+            else
+
+            {
+
+                if (firstInizialize)
+                {
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Damage, amount = 0 });
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Force, amount = 0 });
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Speed, amount = 0 });
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Health, amount = 0 });
+                    firstInizialize = false;
+                }
+                Debug.Log("Buff with type " + upgrade.buffType + " not found during load.");
+            }
+        }
     }
     #endregion*/
 }
 
 [System.Serializable]
+
+public struct UpgrateBarList
+{
+    public BuffType buffType;
+    public float amount;
+    public UpgrateBarList(BuffType buffType, float amount)
+    {
+        this.buffType = buffType;
+        this.amount = amount;
+    }
+}
+[System.Serializable]
 public struct UpgradeBarSaveData
 {
-    public float amount;
+    public List<UpgrateBarList> amountBarList; 
 }

@@ -30,6 +30,7 @@ public class Buff
     public float additiveBonus;
     public float multipleBonus;
     public float shopAmount;
+    public float amount;
     /*public override bool Equals(object obj)
     {
         if (obj is Buff other)

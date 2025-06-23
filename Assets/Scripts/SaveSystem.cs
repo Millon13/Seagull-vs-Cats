@@ -16,7 +16,7 @@ public class SaveSystem
         public InventorySaveData InventoryData;
         public UpdateSaveData UpdateData;
         //internal List<UpgrateList> upgradeAmountList;
-        //public UpgradeBarSaveData UpgradeBarData;
+        public UpgradeBarSaveData UpgradeBarData;
     }
     public static string SaveFileName()
     {
@@ -50,7 +50,7 @@ public class SaveSystem
         //GameManager.Instance.Player.Save(ref saveData.PlayerData);
         GameManager.Instance.inventory.Save(ref saveData.InventoryData);
         GameManager.Instance.upgrade.Save(ref saveData.UpdateData);
-       // GameManager.Instance.bar.Save(ref saveData.UpgradeBarData);
+        GameManager.Instance.bar.Save(ref saveData.UpgradeBarData);
     }
     public static void Load()
     {
@@ -69,6 +69,7 @@ public class SaveSystem
         //GameManager.Instance.Player.Load(saveData.PlayerData);//тут нуль референс
         GameManager.Instance.inventory.Load(saveData.InventoryData);
         GameManager.Instance.upgrade.Load(saveData.UpdateData);
+        GameManager.Instance.bar.Load(saveData.UpgradeBarData);
        
     }
 }
