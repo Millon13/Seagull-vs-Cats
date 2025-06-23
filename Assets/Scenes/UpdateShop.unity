@@ -546,6 +546,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 385705105}
+        m_TargetAssemblyTypeName: BuffUpgradeButton, Assembly-CSharp
+        m_MethodName: OnUpgradeButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &233748989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,6 +1050,7 @@ MonoBehaviour:
   currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
+  oneInizialize: 1
   upgradeBar: {fileID: 385705106}
 --- !u!114 &385705106
 MonoBehaviour:
@@ -1051,6 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113c0854630eb644ab0ec23d365721ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 233748989}
   updateBar: {fileID: 385705102}
   mainButton: {fileID: 233748988}
   other1Button: {fileID: 2006554244}
@@ -1058,6 +1072,10 @@ MonoBehaviour:
   other3Button: {fileID: 2116534710}
   deltaProgress: 0.1428
   buffUpgradeButton: {fileID: 385705105}
+  isUpdating: 0
+  firstInizialize: 0
+  thisAmount: 0
+  buffReciever: {fileID: 38849476}
 --- !u!1 &529971232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1279,7 @@ MonoBehaviour:
   currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
+  oneInizialize: 1
   upgradeBar: {fileID: 618858359}
 --- !u!114 &618858357
 MonoBehaviour:
@@ -1312,6 +1331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113c0854630eb644ab0ec23d365721ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 801632134}
   updateBar: {fileID: 618858357}
   mainButton: {fileID: 801632133}
   other1Button: {fileID: 233748988}
@@ -1319,6 +1339,10 @@ MonoBehaviour:
   other3Button: {fileID: 2116534710}
   deltaProgress: 0.1428
   buffUpgradeButton: {fileID: 618858356}
+  isUpdating: 0
+  firstInizialize: 0
+  thisAmount: 0
+  buffReciever: {fileID: 38849476}
 --- !u!1 &706452379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,6 +1654,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 618858359}
+        m_TargetAssemblyTypeName: UpgradeBar, Assembly-CSharp
+        m_MethodName: OnUpgradeBarClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &801632134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1894,6 +1930,7 @@ MonoBehaviour:
   currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
+  oneInizialize: 1
   upgradeBar: {fileID: 898768147}
 --- !u!114 &898768145
 MonoBehaviour:
@@ -1945,6 +1982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113c0854630eb644ab0ec23d365721ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 2116534711}
   updateBar: {fileID: 898768145}
   mainButton: {fileID: 2116534710}
   other1Button: {fileID: 233748988}
@@ -1952,6 +1990,10 @@ MonoBehaviour:
   other3Button: {fileID: 801632133}
   deltaProgress: 0.1428
   buffUpgradeButton: {fileID: 898768144}
+  isUpdating: 0
+  firstInizialize: 0
+  thisAmount: 0
+  buffReciever: {fileID: 38849476}
 --- !u!114 &921666671 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4080513722619437918, guid: 92d98164f19dd854fb42d525a475799c, type: 3}
@@ -3801,6 +3843,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2047238023}
+        m_TargetAssemblyTypeName: UpgradeBar, Assembly-CSharp
+        m_MethodName: OnUpgradeBarClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2006554245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3913,6 +3967,7 @@ MonoBehaviour:
   currentbuffReciever: {fileID: 38849476}
   upgradeAmount: 5
   isUpgraded: 0
+  oneInizialize: 1
   upgradeBar: {fileID: 2047238023}
 --- !u!114 &2047238021
 MonoBehaviour:
@@ -3964,6 +4019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 113c0854630eb644ab0ec23d365721ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonUpgrade: {fileID: 2006554245}
   updateBar: {fileID: 2047238021}
   mainButton: {fileID: 2006554244}
   other1Button: {fileID: 233748988}
@@ -3971,6 +4027,10 @@ MonoBehaviour:
   other3Button: {fileID: 2116534710}
   deltaProgress: 0.1428
   buffUpgradeButton: {fileID: 2047238020}
+  isUpdating: 0
+  firstInizialize: 0
+  thisAmount: 0
+  buffReciever: {fileID: 38849476}
 --- !u!114 &2097254443 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 184095620809367911, guid: 3f45ea01cd373c542bd19732544e6bdf, type: 3}
@@ -4119,6 +4179,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2097254443}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EndLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 898768147}
+        m_TargetAssemblyTypeName: UpgradeBar, Assembly-CSharp
+        m_MethodName: OnUpgradeBarClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

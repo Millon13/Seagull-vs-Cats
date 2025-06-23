@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 
 public class UpgradeBar : MonoBehaviour
- {    
-    
+ {
+    [SerializeField] public ButtonUpgrade buttonUpgrade;
     [SerializeField] private Image updateBar;// —сылка на Image компонента прогресс-бара
     [SerializeField] private Button mainButton;
     [SerializeField] private Button other1Button;
@@ -109,12 +109,15 @@ public class UpgradeBar : MonoBehaviour
     }
     public void UpgradeBarBuff(BuffType thisBuffType, int thisAmount)
     {
-   
+       
+
+        thisBuffType = buttonUpgrade.buffType;
+
         var buff = buffReciever.Buffs.Find(b => b.type == thisBuffType);//buff=null
 
         if (buff != null)
         {
-            buff.amount += deltaProgress;
+            buff.amount +=targetProgress;
             Debug.Log("amount" + buff.amount);
         }
         else if (buff == null)
@@ -148,29 +151,30 @@ public class UpgradeBar : MonoBehaviour
     #region Save and Load
     public void Save(ref UpgradeBarSaveData data)
     {
-        //data.amount = targetProgress;
+        
         data.amountBarList = new List<UpgrateBarList>();
 
 
         foreach (var buff in buffReciever.Buffs)
         {
             data.amountBarList.Add(new UpgrateBarList(buff.type, buff.amount));
+            
         }
     }
     public void Load(UpgradeBarSaveData data)
     {
         //targetProgress = data.amount;
-        if (data.amountBarList == null || data.amountBarList.Count == 0)
+        /*if (data.amountBarList == null || data.amountBarList.Count == 0)
         {
             Debug.LogError("No upgrade data to load.");
             return;
-        }
-        foreach (var upgrade in data.amountBarList)
+        }*/
+        foreach (var bar in data.amountBarList)
         {
-            var buff = buffReciever.Buffs.Find(b => b.type == upgrade.buffType);
+            var buff = buffReciever.Buffs.Find(b => b.type == bar.buffType);
             if (buff != null)
             {
-                buff.shopAmount = upgrade.amount;
+                buff.amount = bar.amount;
             }
             else
 
@@ -184,7 +188,7 @@ public class UpgradeBar : MonoBehaviour
                     buffReciever.Buffs.Add(new Buff { type = BuffType.Health, amount = 0 });
                     firstInizialize = false;
                 }
-                Debug.Log("Buff with type " + upgrade.buffType + " not found during load.");
+                Debug.Log("Buff with type " + bar.buffType + " not found during load.");
             }
         }
     }
