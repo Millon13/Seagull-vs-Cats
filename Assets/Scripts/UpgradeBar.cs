@@ -24,6 +24,7 @@ public class UpgradeBar : MonoBehaviour
     [SerializeField] private BuffReciever buffReciever;
     void Start()
     {
+        
         GameManager.Instance.bar = this;
         StartCoroutine(UpdateButtState());
         //UpdateButtonState();
@@ -103,10 +104,10 @@ public class UpgradeBar : MonoBehaviour
         StartCoroutine(UpdateThisBar());
        
     } */
-    public void OnUpgradeBarClicked()
+    /*public void OnUpgradeBarClicked()
     {
         UpgradeBarBuff(thisBuffType, thisAmount);
-    }
+    }*/
     public void UpgradeBarBuff(BuffType thisBuffType, int thisAmount)
     {
        
@@ -117,7 +118,7 @@ public class UpgradeBar : MonoBehaviour
 
         if (buff != null)
         {
-            buff.amount +=targetProgress;
+            buff.amount += targetProgress;
             Debug.Log("amount" + buff.amount);
         }
         else if (buff == null)
@@ -143,9 +144,18 @@ public class UpgradeBar : MonoBehaviour
     {
         if (!isUpdating) // Проверяем, идет ли обновление
         {
+            
             ApplyBuff();
             Debug.Log("Button clicked!");
+            UpgradeBarBuff(thisBuffType, thisAmount);
+            
         }
+        
+    }
+    public IEnumerator WaitFrame()
+    {
+        yield return new WaitForEndOfFrame();
+
     }
 
     #region Save and Load
@@ -169,30 +179,35 @@ public class UpgradeBar : MonoBehaviour
             Debug.LogError("No upgrade data to load.");
             return;
         }*/
+        
         foreach (var bar in data.amountBarList)
         {
             var buff = buffReciever.Buffs.Find(b => b.type == bar.buffType);
             if (buff != null)
             {
+                //StartCoroutine(WaitFrame());
                 buff.amount = bar.amount;
+                
+                updateBar.fillAmount = Mathf.Clamp01(bar.amount);
+                Debug.Log("Load targetProgress"+ bar.amount);
             }
             else
 
             {
-
+                
                 if (firstInizialize)
                 {
-                    buffReciever.Buffs.Add(new Buff { type = BuffType.Damage, amount = 0 });
-                    buffReciever.Buffs.Add(new Buff { type = BuffType.Force, amount = 0 });
-                    buffReciever.Buffs.Add(new Buff { type = BuffType.Speed, amount = 0 });
-                    buffReciever.Buffs.Add(new Buff { type = BuffType.Health, amount = 0 });
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Damage, amount = bar.amount });
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Force, amount = bar.amount });
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Speed, amount = bar.amount });
+                    buffReciever.Buffs.Add(new Buff { type = BuffType.Health, amount = bar.amount });
                     firstInizialize = false;
                 }
                 Debug.Log("Buff with type " + bar.buffType + " not found during load.");
             }
         }
     }
-    #endregion*/
+    #endregion
 }
 
 [System.Serializable]

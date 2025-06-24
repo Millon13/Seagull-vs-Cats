@@ -546,9 +546,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 385705105}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BuffUpgradeButton, Assembly-CSharp
-        m_MethodName: OnUpgradeButtonClicked
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1654,9 +1654,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 618858359}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UpgradeBar, Assembly-CSharp
-        m_MethodName: OnUpgradeBarClicked
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3843,9 +3843,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2047238023}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UpgradeBar, Assembly-CSharp
-        m_MethodName: OnUpgradeBarClicked
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4188,9 +4188,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 898768147}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UpgradeBar, Assembly-CSharp
-        m_MethodName: OnUpgradeBarClicked
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
