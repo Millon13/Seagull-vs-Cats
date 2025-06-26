@@ -186,12 +186,21 @@ public class UpgradeBar : MonoBehaviour
         foreach (var bar in data.amountBarList)
         {
             var buff = buffReciever.Buffs.Find(b => b.type == bar.buffType);
+            if (bar.buffType == buff.type)
+            {
+                //SetTargetProgress(targetProgress);
+                // StartCoroutine(UpdateThisBar());
+                //ButtonClick();
+                ApplyBuff();
+
+            }
+           
             if (buff != null)
             {
                 //StartCoroutine(WaitFrame());
                 //targetProgress = buff.amount;
                 buff.amount = bar.amount;
-                ApplyBuff();
+               
                 Debug.Log("Load buff "+ bar.buffType+" targetProgress " + bar.amount);
             }
             else
