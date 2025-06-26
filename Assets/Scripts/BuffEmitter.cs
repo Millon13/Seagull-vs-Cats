@@ -31,20 +31,6 @@ public class Buff
     public float multipleBonus;
     public float shopAmount;
     public float amount;
-    /*public override bool Equals(object obj)
-    {
-        if (obj is Buff other)
-        {
-            return type == other.type && shopAmount == other.shopAmount;
-        }
-        return false;
-    }
-
-    public override int GetHashCode()
-    {
-        return (int)type ^ shopAmount.GetHashCode();
-    }*/
-
 }
 public enum BuffType : byte
 {

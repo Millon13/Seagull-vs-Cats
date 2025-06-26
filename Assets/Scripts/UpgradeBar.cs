@@ -14,13 +14,13 @@ public class UpgradeBar : MonoBehaviour
     [SerializeField] private Button other2Button;
     [SerializeField] private Button other3Button;
     private float currentProgress = 0f; // Текущий прогресс
-    private float targetProgress = 0f; // Целевой прогресс
+    private float targetProgress; // Целевой прогресс
     [SerializeField] private float deltaProgress = 0.1428f;
     [SerializeField] private BuffUpgradeButton buffUpgradeButton;
     public bool isUpdating;
     public bool firstInizialize;
     private BuffType thisBuffType;
-    public int thisAmount;
+    public float thisAmount;
     [SerializeField] private BuffReciever buffReciever;
     void Start()
     {
@@ -108,7 +108,19 @@ public class UpgradeBar : MonoBehaviour
     {
         UpgradeBarBuff(thisBuffType, thisAmount);
     }*/
-    public void UpgradeBarBuff(BuffType thisBuffType, int thisAmount)
+    public void ApplyBuff()
+    {
+        
+        SetTargetProgress(targetProgress + deltaProgress);
+        //isUpdating = true;
+        StartCoroutine(UpdateThisBar());
+    }
+    public void SetTargetProgress(float newTarget)
+    {
+        targetProgress = Mathf.Clamp01(newTarget); // Устанавливаем новый целевой прогресс и ограничиваем его от 0 до 1
+        Debug.Log($"Target progress set to: {targetProgress}");
+    }
+    public void UpgradeBarBuff(BuffType thisBuffType, float thisAmount)
     {
        
 
@@ -118,7 +130,7 @@ public class UpgradeBar : MonoBehaviour
 
         if (buff != null)
         {
-            buff.amount += targetProgress;
+            buff.amount = targetProgress;
             Debug.Log("amount" + buff.amount);
         }
         else if (buff == null)
@@ -127,22 +139,12 @@ public class UpgradeBar : MonoBehaviour
         }
        
     }
-    public void ApplyBuff()
-    {
-        
-        SetTargetProgress(targetProgress + deltaProgress);
-        //isUpdating = true;
-        StartCoroutine(UpdateThisBar());
-    }
+  
 
-    public void SetTargetProgress(float newTarget)
-    {
-        targetProgress = Mathf.Clamp01(newTarget); // Устанавливаем новый целевой прогресс и ограничиваем его от 0 до 1
-        Debug.Log($"Target progress set to: {targetProgress}");
-    }
+    
     public void ButtonClick()
     {
-        if (!isUpdating) // Проверяем, идет ли обновление
+       // if (!isUpdating) // Проверяем, идет ли обновление
         {
             
             ApplyBuff();
@@ -167,6 +169,7 @@ public class UpgradeBar : MonoBehaviour
 
         foreach (var buff in buffReciever.Buffs)
         {
+            //buff.amount = targetProgress;
             data.amountBarList.Add(new UpgrateBarList(buff.type, buff.amount));
             
         }
@@ -174,11 +177,11 @@ public class UpgradeBar : MonoBehaviour
     public void Load(UpgradeBarSaveData data)
     {
         //targetProgress = data.amount;
-        /*if (data.amountBarList == null || data.amountBarList.Count == 0)
+        if (data.amountBarList == null || data.amountBarList.Count == 0)
         {
             Debug.LogError("No upgrade data to load.");
             return;
-        }*/
+        }
         
         foreach (var bar in data.amountBarList)
         {
@@ -186,10 +189,10 @@ public class UpgradeBar : MonoBehaviour
             if (buff != null)
             {
                 //StartCoroutine(WaitFrame());
+                //targetProgress = buff.amount;
                 buff.amount = bar.amount;
-                
-                updateBar.fillAmount = Mathf.Clamp01(bar.amount);
-                Debug.Log("Load targetProgress"+ bar.amount);
+                ApplyBuff();
+                Debug.Log("Load buff "+ bar.buffType+" targetProgress " + bar.amount);
             }
             else
 
@@ -205,6 +208,7 @@ public class UpgradeBar : MonoBehaviour
                 }
                 Debug.Log("Buff with type " + bar.buffType + " not found during load.");
             }
+            
         }
     }
     #endregion

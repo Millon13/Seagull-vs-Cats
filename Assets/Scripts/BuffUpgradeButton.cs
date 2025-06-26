@@ -44,6 +44,7 @@ public class BuffUpgradeButton : MonoBehaviour
 
         ChargeMoney(); 
         upgradeBar.UpdateButtonState();
+        //upgradeBar.ButtonClick();
         UpgradeBuff(currentbuffType,upgradeAmount);
         
         upgradeBar.isUpdating = false;
